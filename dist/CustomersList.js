@@ -8,7 +8,9 @@ var _React = React,
     useState = _React.useState;
 
 
-var CustomersList = function CustomersList() {
+var CustomersList = function CustomersList(_ref) {
+  var handleSubRouteChange = _ref.handleSubRouteChange;
+
   var _useState = useState(null),
       _useState2 = _slicedToArray(_useState, 2),
       customers = _useState2[0],
@@ -39,15 +41,15 @@ var CustomersList = function CustomersList() {
       { className: "content" },
       React.createElement(
         "div",
-        { "class": "customers-title-container" },
+        { className: "customers-title-container" },
         React.createElement(
           "div",
-          { "class": "customers-title" },
+          { className: "customers-title" },
           "Customers"
         ),
         React.createElement(
           "button",
-          { "class": "customers-new-btn" },
+          { className: "customers-new-btn", onClick: handleSubRouteChange },
           "+ New Customer"
         )
       ),

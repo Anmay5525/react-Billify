@@ -3,19 +3,31 @@ const Table = ({ fields, data }) => {
     <div>
       <table className="table">
         <thead>
-          {fields.map((el) => {
-            return <th>{el.toUpperCase().replace("_", " ")}</th>;
-          })}
+          <tr>
+            {fields.map((el) => {
+              return (
+                <th key={JSON.stringify(el)}>
+                  {el.toUpperCase().replace("_", " ")}
+                </th>
+              );
+            })}
+          </tr>
         </thead>
-        {data.map((el) => {
-          return (
-            <tr class="tr">
-              {fields.map((el1) => {
-                return <td>{el[el1]}</td>;
-              })}
-            </tr>
-          );
-        })}
+        <tbody>
+          {data.map((el, j) => {
+            return (
+              <tr className="tr" key={JSON.stringify(el) + j}>
+                {fields.map((field, i) => {
+                  return (
+                    <td key={JSON.stringify(el) + JSON.stringify(field) + i}>
+                      {el[field]}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

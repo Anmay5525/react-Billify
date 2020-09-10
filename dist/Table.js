@@ -11,27 +11,35 @@ var Table = function Table(_ref) {
       React.createElement(
         "thead",
         null,
-        fields.map(function (el) {
-          return React.createElement(
-            "th",
-            null,
-            el.toUpperCase().replace("_", " ")
-          );
-        })
-      ),
-      data.map(function (el) {
-        return React.createElement(
+        React.createElement(
           "tr",
-          { "class": "tr" },
-          fields.map(function (el1) {
+          null,
+          fields.map(function (el) {
             return React.createElement(
-              "td",
-              null,
-              el[el1]
+              "th",
+              { key: JSON.stringify(el) },
+              el.toUpperCase().replace("_", " ")
             );
           })
-        );
-      })
+        )
+      ),
+      React.createElement(
+        "tbody",
+        null,
+        data.map(function (el, j) {
+          return React.createElement(
+            "tr",
+            { className: "tr", key: JSON.stringify(el) + j },
+            fields.map(function (field, i) {
+              return React.createElement(
+                "td",
+                { key: JSON.stringify(el) + JSON.stringify(field) + i },
+                el[field]
+              );
+            })
+          );
+        })
+      )
     )
   );
 };

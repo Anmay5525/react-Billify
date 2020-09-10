@@ -4,11 +4,11 @@ var LeftPanel = function LeftPanel(_ref) {
 
   return React.createElement(
     "div",
-    { "class": "left-panel" },
+    { className: "left-panel" },
     React.createElement(
       "div",
       {
-        "class": "btn " + (route === "Customers" ? "active" : ""),
+        className: "btn " + (route === "Customers" ? "active" : ""),
         id: "Customers",
         onClick: function onClick() {
           return handleRouteChange("Customers");
@@ -19,7 +19,7 @@ var LeftPanel = function LeftPanel(_ref) {
     React.createElement(
       "div",
       {
-        "class": "btn " + (route === "Items" ? "active" : ""),
+        className: "btn " + (route === "Items" ? "active" : ""),
         id: "Items",
         onClick: function onClick() {
           return handleRouteChange("Items");
@@ -30,7 +30,7 @@ var LeftPanel = function LeftPanel(_ref) {
     React.createElement(
       "div",
       {
-        "class": "btn " + (route === "Invoices" ? "active" : ""),
+        className: "btn " + (route === "Invoices" ? "active" : ""),
         id: "Invoices",
         onClick: function onClick() {
           return handleRouteChange("Invoices");

@@ -40,15 +40,15 @@ var InvoicesList = function InvoicesList() {
       { className: "content" },
       React.createElement(
         "div",
-        { "class": "invoices-title-container" },
+        { className: "invoices-title-container" },
         React.createElement(
           "div",
-          { "class": "invoices-title" },
+          { className: "invoices-title" },
           "Invoices"
         ),
         React.createElement(
           "button",
-          { "class": "invoices-new-btn" },
+          { className: "invoices-new-btn" },
           "+ New Invoice"
         )
       ),

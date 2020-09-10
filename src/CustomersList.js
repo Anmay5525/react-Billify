@@ -3,7 +3,7 @@ import Loader from "./Loader.js";
 
 const { useEffect, useState } = React;
 
-const CustomersList = () => {
+const CustomersList = ({ handleSubRouteChange }) => {
   const [customers, setCustomers] = useState(null);
 
   const getCustomers = () => {
@@ -25,9 +25,11 @@ const CustomersList = () => {
     });
     return (
       <div className="content">
-        <div class="customers-title-container">
-          <div class="customers-title">Customers</div>
-          <button class="customers-new-btn">+ New Customer</button>
+        <div className="customers-title-container">
+          <div className="customers-title">Customers</div>
+          <button className="customers-new-btn" onClick={handleSubRouteChange}>
+            + New Customer
+          </button>
         </div>
         <Table fields={fields} data={data} />
       </div>

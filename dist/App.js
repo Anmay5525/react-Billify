@@ -16,16 +16,54 @@ var App = function App() {
       route = _useState2[0],
       setRoute = _useState2[1];
 
+  var _useState3 = useState("list"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      subRoute = _useState4[0],
+      setSubRoute = _useState4[1];
+
   var handleRouteChange = function handleRouteChange(r) {
     setRoute(r);
-    // console.log(route);
+    setSubRoute("list");
+  };
+
+  var handleSubRouteChange = function handleSubRouteChange() {
+    setSubRoute("new");
+  };
+
+  var handleNewCustomer = function handleNewCustomer(name, email, phone) {
+    var url = "https://rzp-training.herokuapp.com/team1/customers";
+
+    var data = {
+      name: name,
+      email: email,
+      contact: phone
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (r) {
+      return setSubRoute("list");
+    }).catch(function (errror) {
+      return console.log(error);
+    });
   };
 
   return React.createElement(
     "div",
-    { "class": "container" },
+    { className: "container" },
     React.createElement(LeftPanel, { route: route, handleRouteChange: handleRouteChange }),
-    React.createElement(RightPanel, { route: route })
+    React.createElement(RightPanel, {
+      route: route,
+      subRoute: subRoute,
+      handleSubRouteChange: handleSubRouteChange,
+      handleNewCustomer: handleNewCustomer
+    })
   );
 };
 

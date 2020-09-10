@@ -26,9 +26,9 @@ const ItemsList = () => {
 
     return (
       <div className="content">
-        <div class="items-title-container">
-          <div class="items-title">Items</div>
-          <button class="items-new-btn">+ New Item</button>
+        <div className="items-title-container">
+          <div className="items-title">Items</div>
+          <button className="items-new-btn">+ New Item</button>
         </div>
         <Table fields={fields} data={data} />
       </div>

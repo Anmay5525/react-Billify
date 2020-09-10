@@ -40,15 +40,15 @@ var ItemsList = function ItemsList() {
       { className: "content" },
       React.createElement(
         "div",
-        { "class": "items-title-container" },
+        { className: "items-title-container" },
         React.createElement(
           "div",
-          { "class": "items-title" },
+          { className: "items-title" },
           "Items"
         ),
         React.createElement(
           "button",
-          { "class": "items-new-btn" },
+          { className: "items-new-btn" },
           "+ New Item"
         )
       ),

@@ -26,9 +26,9 @@ const InvoicesList = () => {
     });
     return (
       <div className="content">
-        <div class="invoices-title-container">
-          <div class="invoices-title">Invoices</div>
-          <button class="invoices-new-btn">+ New Invoice</button>
+        <div className="invoices-title-container">
+          <div className="invoices-title">Invoices</div>
+          <button className="invoices-new-btn">+ New Invoice</button>
         </div>
         <Table fields={fields} data={data} />
       </div>
