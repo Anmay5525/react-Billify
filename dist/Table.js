@@ -15,7 +15,7 @@ var Table = function Table(_ref) {
           return React.createElement(
             "th",
             null,
-            el.toUpperCase()
+            el.toUpperCase().replace("_", " ")
           );
         })
       ),
@@ -24,13 +24,6 @@ var Table = function Table(_ref) {
           "tr",
           { "class": "tr" },
           fields.map(function (el1) {
-            if (el1 === "amount") {
-              return React.createElement(
-                "td",
-                null,
-                el[el1] / 100
-              );
-            }
             return React.createElement(
               "td",
               null,

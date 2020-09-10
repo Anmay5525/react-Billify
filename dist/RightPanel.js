@@ -1,5 +1,6 @@
 import CustomersList from "./CustomersList.js";
 import ItemsList from "./ItemsList.js";
+import InvoicesList from "./InvoicesList.js";
 
 var RightPanel = function RightPanel(_ref) {
   var route = _ref.route;
@@ -31,7 +32,7 @@ var RightPanel = function RightPanel(_ref) {
       React.createElement(
         "div",
         { "class": "content", id: "Invoices" },
-        "Invoices"
+        React.createElement(InvoicesList, null)
       )
     );
   }

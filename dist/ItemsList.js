@@ -26,6 +26,15 @@ var ItemsList = function ItemsList() {
   useEffect(getItems, []);
   var fields = ["name", "description", "amount", "currency"];
   if (items) {
+    var data = items.items.map(function (item) {
+      return {
+        name: item.name,
+        description: item.description,
+        amount: item.amount / 100,
+        currency: item.currency
+      };
+    });
+
     return React.createElement(
       "div",
       { className: "content" },
@@ -43,7 +52,7 @@ var ItemsList = function ItemsList() {
           "+ New Item"
         )
       ),
-      React.createElement(Table, { fields: fields, data: items.items })
+      React.createElement(Table, { fields: fields, data: data })
     );
   } else {
     return React.createElement(Loader, null);

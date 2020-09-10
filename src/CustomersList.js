@@ -13,15 +13,23 @@ const CustomersList = () => {
       .catch((er) => console.log(er));
   };
   useEffect(getCustomers, []);
-  const fields = ["name", "email", "contact"];
+  const fields = ["name", "email", "contact", "created_at"];
   if (customers) {
+    const data = customers.items.map((item) => {
+      return {
+        name: item.name,
+        email: item.email,
+        contact: item.contact,
+        created_at: new Date(item.created_at * 1000).toDateString(),
+      };
+    });
     return (
       <div className="content">
         <div class="customers-title-container">
           <div class="customers-title">Customers</div>
           <button class="customers-new-btn">+ New Customer</button>
         </div>
-        <Table fields={fields} data={customers.items} />
+        <Table fields={fields} data={data} />
       </div>
     );
   } else {

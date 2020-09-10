@@ -15,13 +15,22 @@ const ItemsList = () => {
   useEffect(getItems, []);
   const fields = ["name", "description", "amount", "currency"];
   if (items) {
+    const data = items.items.map((item) => {
+      return {
+        name: item.name,
+        description: item.description,
+        amount: item.amount / 100,
+        currency: item.currency,
+      };
+    });
+
     return (
       <div className="content">
         <div class="items-title-container">
           <div class="items-title">Items</div>
           <button class="items-new-btn">+ New Item</button>
         </div>
-        <Table fields={fields} data={items.items} />
+        <Table fields={fields} data={data} />
       </div>
     );
   } else {

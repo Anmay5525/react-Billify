@@ -8,30 +8,31 @@ var _React = React,
     useState = _React.useState;
 
 
-var CustomersList = function CustomersList() {
+var InvoicesList = function InvoicesList() {
   var _useState = useState(null),
       _useState2 = _slicedToArray(_useState, 2),
-      customers = _useState2[0],
-      setCustomers = _useState2[1];
+      invoices = _useState2[0],
+      setInvoices = _useState2[1];
 
-  var getCustomers = function getCustomers() {
-    fetch("https://rzp-training.herokuapp.com/team1/customers").then(function (res) {
+  var getInvoices = function getInvoices() {
+    fetch("https://rzp-training.herokuapp.com/team1/invoices").then(function (res) {
       return res.json();
     }).then(function (r) {
-      return setCustomers(r);
+      return setInvoices(r);
     }).catch(function (er) {
       return console.log(er);
     });
   };
-  useEffect(getCustomers, []);
-  var fields = ["name", "email", "contact", "created_at"];
-  if (customers) {
-    var data = customers.items.map(function (item) {
+  useEffect(getInvoices, []);
+  var fields = ["date", "customer", "status", "amount", "amount_due"];
+  if (invoices) {
+    var data = invoices.items.map(function (item) {
       return {
-        name: item.name,
-        email: item.email,
-        contact: item.contact,
-        created_at: new Date(item.created_at * 1000).toDateString()
+        date: new Date(item.date * 1000).toDateString(),
+        customer: item.customer_details.name,
+        status: item.status.toUpperCase(),
+        amount: item.amount / 100,
+        amount_due: item.amount_due / 100
       };
     });
     return React.createElement(
@@ -39,16 +40,16 @@ var CustomersList = function CustomersList() {
       { className: "content" },
       React.createElement(
         "div",
-        { "class": "customers-title-container" },
+        { "class": "invoices-title-container" },
         React.createElement(
           "div",
-          { "class": "customers-title" },
-          "Customers"
+          { "class": "invoices-title" },
+          "Invoices"
         ),
         React.createElement(
           "button",
-          { "class": "customers-new-btn" },
-          "+ New Customer"
+          { "class": "invoices-new-btn" },
+          "+ New Invoice"
         )
       ),
       React.createElement(Table, { fields: fields, data: data })
@@ -57,4 +58,4 @@ var CustomersList = function CustomersList() {
     return React.createElement(Loader, null);
   }
 };
-export default CustomersList;
+export default InvoicesList;

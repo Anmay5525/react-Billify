@@ -1,5 +1,6 @@
 import CustomersList from "./CustomersList.js";
 import ItemsList from "./ItemsList.js";
+import InvoicesList from "./InvoicesList.js";
 
 const RightPanel = ({ route }) => {
   if (route === "Customers") {
@@ -22,7 +23,7 @@ const RightPanel = ({ route }) => {
     return (
       <div class="right-panel">
         <div class="content" id="Invoices">
-          Invoices
+          <InvoicesList />
         </div>
       </div>
     );

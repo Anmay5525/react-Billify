@@ -4,16 +4,13 @@ const Table = ({ fields, data }) => {
       <table className="table">
         <thead>
           {fields.map((el) => {
-            return <th>{el.toUpperCase()}</th>;
+            return <th>{el.toUpperCase().replace("_", " ")}</th>;
           })}
         </thead>
         {data.map((el) => {
           return (
             <tr class="tr">
               {fields.map((el1) => {
-                if (el1 === "amount") {
-                  return <td>{el[el1] / 100}</td>;
-                }
                 return <td>{el[el1]}</td>;
               })}
             </tr>
