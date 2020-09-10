@@ -49,7 +49,32 @@ var App = function App() {
       return res.json();
     }).then(function (r) {
       return setSubRoute("list");
-    }).catch(function (errror) {
+    }).catch(function (error) {
+      return console.log(error);
+    });
+  };
+
+  var handleNewItem = function handleNewItem(name, amount, description) {
+    var url = "https://rzp-training.herokuapp.com/team1/items";
+
+    var data = {
+      name: name,
+      amount: amount,
+      description: description,
+      currency: "INR"
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (r) {
+      return setSubRoute("list");
+    }).catch(function (error) {
       return console.log(error);
     });
   };
@@ -62,7 +87,8 @@ var App = function App() {
       route: route,
       subRoute: subRoute,
       handleSubRouteChange: handleSubRouteChange,
-      handleNewCustomer: handleNewCustomer
+      handleNewCustomer: handleNewCustomer,
+      handleNewItem: handleNewItem
     })
   );
 };

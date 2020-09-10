@@ -12,7 +12,10 @@ const CustomersList = ({ handleSubRouteChange }) => {
       .then((r) => setCustomers(r))
       .catch((er) => console.log(er));
   };
-  useEffect(getCustomers, []);
+  useEffect(() => {
+    getCustomers();
+    return () => console.log("unmounted");
+  }, []);
   const fields = ["name", "email", "contact", "created_at"];
   if (customers) {
     const data = customers.items.map((item) => {

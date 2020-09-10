@@ -3,7 +3,7 @@ import Loader from "./Loader.js";
 
 const { useEffect, useState } = React;
 
-const ItemsList = () => {
+const ItemsList = ({ handleSubRouteChange }) => {
   const [items, setItems] = useState(null);
 
   const getItems = () => {
@@ -28,7 +28,9 @@ const ItemsList = () => {
       <div className="content">
         <div className="items-title-container">
           <div className="items-title">Items</div>
-          <button className="items-new-btn">+ New Item</button>
+          <button className="items-new-btn" onClick={handleSubRouteChange}>
+            + New Item
+          </button>
         </div>
         <Table fields={fields} data={data} />
       </div>

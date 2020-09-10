@@ -8,7 +8,9 @@ var _React = React,
     useState = _React.useState;
 
 
-var ItemsList = function ItemsList() {
+var ItemsList = function ItemsList(_ref) {
+  var handleSubRouteChange = _ref.handleSubRouteChange;
+
   var _useState = useState(null),
       _useState2 = _slicedToArray(_useState, 2),
       items = _useState2[0],
@@ -48,7 +50,7 @@ var ItemsList = function ItemsList() {
         ),
         React.createElement(
           "button",
-          { className: "items-new-btn" },
+          { className: "items-new-btn", onClick: handleSubRouteChange },
           "+ New Item"
         )
       ),

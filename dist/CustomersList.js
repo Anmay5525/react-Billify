@@ -25,7 +25,12 @@ var CustomersList = function CustomersList(_ref) {
       return console.log(er);
     });
   };
-  useEffect(getCustomers, []);
+  useEffect(function () {
+    getCustomers();
+    return function () {
+      return console.log("unmounted");
+    };
+  }, []);
   var fields = ["name", "email", "contact", "created_at"];
   if (customers) {
     var data = customers.items.map(function (item) {

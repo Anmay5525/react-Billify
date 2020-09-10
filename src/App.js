@@ -37,7 +37,29 @@ const App = () => {
     })
       .then((res) => res.json())
       .then((r) => setSubRoute("list"))
-      .catch((errror) => console.log(error));
+      .catch((error) => console.log(error));
+  };
+
+  const handleNewItem = (name, amount, description) => {
+    const url = "https://rzp-training.herokuapp.com/team1/items";
+
+    const data = {
+      name: name,
+      amount: amount,
+      description: description,
+      currency: "INR",
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((r) => setSubRoute("list"))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -48,6 +70,7 @@ const App = () => {
         subRoute={subRoute}
         handleSubRouteChange={handleSubRouteChange}
         handleNewCustomer={handleNewCustomer}
+        handleNewItem={handleNewItem}
       />
     </div>
   );
