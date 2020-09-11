@@ -39,7 +39,7 @@ export default function NewItemForm(_ref) {
       React.createElement("input", {
         ref: amount,
         className: "input",
-        type: "text",
+        type: "number",
         id: "amount",
         placeholder: "Enter amount"
       })

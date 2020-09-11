@@ -34,7 +34,7 @@ export default function NewCustomerForm({ handleNewCustomer }) {
         <input
           ref={phone}
           className="input"
-          type="text"
+          type="number"
           id="phone"
           placeholder="Enter phone no."
         />

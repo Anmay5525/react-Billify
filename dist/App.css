@@ -76,6 +76,28 @@ body {
   width: 50%;
 }
 
+.filter-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20 0 20;
+  flex-direction: row;
+}
+
+.filter-input {
+  padding: 5px 4px;
+}
+
+.filter-btn {
+  color: white;
+  background-color: #5851d7;
+  border: none;
+  padding: 7 15 7 15;
+  outline: none;
+}
+.filter-btn:hover {
+  cursor: pointer;
+}
+
 .invoices-title-container,
 .customers-title-container,
 .items-title-container {

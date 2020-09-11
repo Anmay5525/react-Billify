@@ -2,6 +2,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 import Table from "./Table.js";
 import Loader from "./Loader.js";
+import Filter from "./Filter.js";
 
 var _React = React,
     useEffect = _React.useEffect,
@@ -16,6 +17,20 @@ var CustomersList = function CustomersList(_ref) {
       customers = _useState2[0],
       setCustomers = _useState2[1];
 
+  var _useState3 = useState(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      filter = _useState4[0],
+      setFilter = _useState4[1];
+
+  var _useState5 = useState(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      filterString = _useState6[0],
+      setFilterString = _useState6[1];
+
+  var handleChange = function handleChange(event) {
+    setFilterString(event.target.value);
+  };
+
   var getCustomers = function getCustomers() {
     fetch("https://rzp-training.herokuapp.com/team1/customers").then(function (res) {
       return res.json();
@@ -25,13 +40,16 @@ var CustomersList = function CustomersList(_ref) {
       return console.log(er);
     });
   };
+
   useEffect(function () {
     getCustomers();
     return function () {
       return console.log("unmounted");
     };
   }, []);
+
   var fields = ["name", "email", "contact", "created_at"];
+
   if (customers) {
     var data = customers.items.map(function (item) {
       return {
@@ -41,6 +59,11 @@ var CustomersList = function CustomersList(_ref) {
         created_at: new Date(item.created_at * 1000).toDateString()
       };
     });
+
+    var filteredData = data.filter(function (element) {
+      return String(element.name).toLowerCase().includes(filterString.toLowerCase());
+    });
+
     return React.createElement(
       "div",
       { className: "content" },
@@ -58,7 +81,34 @@ var CustomersList = function CustomersList(_ref) {
           "+ New Customer"
         )
       ),
-      React.createElement(Table, { fields: fields, data: data })
+      React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "div",
+          { className: "filter-container" },
+          filter ? React.createElement(Filter, { handleChange: handleChange }) : "",
+          filter ? "" : React.createElement(
+            "button",
+            { className: "filter-btn", onClick: function onClick() {
+                return setFilter(true);
+              } },
+            "Filter"
+          ),
+          React.createElement(
+            "button",
+            {
+              className: "filter-btn",
+              onClick: function onClick() {
+                setFilter(false);
+                setFilterString("");
+              }
+            },
+            "X"
+          )
+        ),
+        React.createElement(Table, { fields: fields, data: filteredData })
+      )
     );
   } else {
     return React.createElement(Loader, null);

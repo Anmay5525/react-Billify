@@ -23,7 +23,7 @@ export default function NewItemForm({ handleNewItem }) {
         <input
           ref={amount}
           className="input"
-          type="text"
+          type="number"
           id="amount"
           placeholder="Enter amount"
         />

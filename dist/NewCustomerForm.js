@@ -55,7 +55,7 @@ export default function NewCustomerForm(_ref) {
       React.createElement("input", {
         ref: phone,
         className: "input",
-        type: "text",
+        type: "number",
         id: "phone",
         placeholder: "Enter phone no."
       })
