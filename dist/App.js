@@ -46,9 +46,15 @@ var App = function App() {
       },
       body: JSON.stringify(data)
     }).then(function (res) {
-      return res.json();
+      if (res.ok) {
+        return res.json();
+      } else {
+        alert("Something went wrong. Server responded with status " + res.status);
+      }
     }).then(function (r) {
-      return setSubRoute("list");
+      if (r) {
+        setSubRoute("list");
+      }
     }).catch(function (error) {
       return console.log(error);
     });
@@ -71,9 +77,15 @@ var App = function App() {
       },
       body: JSON.stringify(data)
     }).then(function (res) {
-      return res.json();
+      if (res.ok) {
+        return res.json();
+      } else {
+        alert("Something went wrong. Server responded with status " + res.status);
+      }
     }).then(function (r) {
-      return setSubRoute("list");
+      if (r) {
+        setSubRoute("list");
+      }
     }).catch(function (error) {
       return console.log(error);
     });

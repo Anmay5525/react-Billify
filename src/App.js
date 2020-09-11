@@ -35,8 +35,20 @@ const App = () => {
       },
       body: JSON.stringify(data),
     })
-      .then((res) => res.json())
-      .then((r) => setSubRoute("list"))
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          alert(
+            "Something went wrong. Server responded with status " + res.status
+          );
+        }
+      })
+      .then((r) => {
+        if (r) {
+          setSubRoute("list");
+        }
+      })
       .catch((error) => console.log(error));
   };
 
@@ -57,8 +69,20 @@ const App = () => {
       },
       body: JSON.stringify(data),
     })
-      .then((res) => res.json())
-      .then((r) => setSubRoute("list"))
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          alert(
+            "Something went wrong. Server responded with status " + res.status
+          );
+        }
+      })
+      .then((r) => {
+        if (r) {
+          setSubRoute("list");
+        }
+      })
       .catch((error) => console.log(error));
   };
 
