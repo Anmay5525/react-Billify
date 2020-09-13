@@ -27,7 +27,7 @@ body {
   box-shadow: 5px 5px 10px 1px silver;
   padding: 10px 10px 0px 10px;
   border: 1px solid #ccc;
-  overflow-y: auto;
+  overflow-y: scroll;
   background-color: rgba(0, 0, 194, 0.05);
 }
 
@@ -55,7 +55,7 @@ body {
   justify-content: center;
   align-content: center;
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   flex-direction: column;
 }
 
@@ -209,8 +209,6 @@ th {
 /* Loader animation */
 
 .loader-container {
-  /* align-content: center;
-  justify-content: center; */
   margin: auto;
 }
 
@@ -221,6 +219,7 @@ th {
   width: 60px;
   height: 60px;
   animation: spin 1s linear infinite;
+  margin: auto;
 }
 
 @keyframes spin {

@@ -27,12 +27,15 @@ var CustomersList = function CustomersList(_ref) {
       filterString = _useState6[0],
       setFilterString = _useState6[1];
 
-  var handleChange = function handleChange(event) {
+  var controller = new AbortController();
+  var signal = controller.signal;
+
+  var handleFilterChange = function handleFilterChange(event) {
     setFilterString(event.target.value);
   };
 
   var getCustomers = function getCustomers() {
-    fetch("https://rzp-training.herokuapp.com/team1/customers").then(function (res) {
+    fetch("https://rzp-training.herokuapp.com/team1/customers", { signal: signal }).then(function (res) {
       return res.json();
     }).then(function (r) {
       return setCustomers(r);
@@ -44,7 +47,7 @@ var CustomersList = function CustomersList(_ref) {
   useEffect(function () {
     getCustomers();
     return function () {
-      return console.log("unmounted");
+      controller.abort();
     };
   }, []);
 
@@ -77,7 +80,12 @@ var CustomersList = function CustomersList(_ref) {
         ),
         React.createElement(
           "button",
-          { className: "customers-new-btn", onClick: handleSubRouteChange },
+          {
+            className: "customers-new-btn",
+            onClick: function onClick() {
+              return handleSubRouteChange("new");
+            }
+          },
           "+ New Customer"
         )
       ),
@@ -87,7 +95,7 @@ var CustomersList = function CustomersList(_ref) {
         React.createElement(
           "div",
           { className: "filter-container" },
-          filter ? React.createElement(Filter, { handleChange: handleChange }) : "",
+          filter ? React.createElement(Filter, { handleChange: handleFilterChange }) : "",
           filter ? "" : React.createElement(
             "button",
             { className: "filter-btn", onClick: function onClick() {

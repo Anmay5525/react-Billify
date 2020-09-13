@@ -6,13 +6,21 @@ const { useEffect, useState } = React;
 const InvoicesList = () => {
   const [invoices, setInvoices] = useState(null);
 
+  const controller = new AbortController();
+  const signal = controller.signal;
+
   const getInvoices = () => {
-    fetch("https://rzp-training.herokuapp.com/team1/invoices")
+    fetch("https://rzp-training.herokuapp.com/team1/invoices", { signal })
       .then((res) => res.json())
       .then((r) => setInvoices(r))
       .catch((er) => console.log(er));
   };
-  useEffect(getInvoices, []);
+  useEffect(() => {
+    getInvoices();
+    return () => {
+      controller.abort();
+    };
+  }, []);
   const fields = ["date", "customer", "status", "amount", "amount_due"];
   if (invoices) {
     const data = invoices.items.map((item) => {

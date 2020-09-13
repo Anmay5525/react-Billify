@@ -15,75 +15,8 @@ const App = () => {
     setSubRoute("list");
   };
 
-  const handleSubRouteChange = () => {
-    setSubRoute("new");
-  };
-
-  const handleNewCustomer = (name, email, phone) => {
-    const url = "https://rzp-training.herokuapp.com/team1/customers";
-
-    const data = {
-      name: name,
-      email: email,
-      contact: phone,
-    };
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          alert(
-            "Something went wrong. Server responded with status " + res.status
-          );
-        }
-      })
-      .then((r) => {
-        if (r) {
-          setSubRoute("list");
-        }
-      })
-      .catch((error) => console.log(error));
-  };
-
-  const handleNewItem = (name, amount, description) => {
-    const url = "https://rzp-training.herokuapp.com/team1/items";
-
-    const data = {
-      name: name,
-      amount: amount,
-      description: description,
-      currency: "INR",
-    };
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          alert(
-            "Something went wrong. Server responded with status " + res.status
-          );
-        }
-      })
-      .then((r) => {
-        if (r) {
-          setSubRoute("list");
-        }
-      })
-      .catch((error) => console.log(error));
+  const handleSubRouteChange = (str) => {
+    setSubRoute(str);
   };
 
   return (
@@ -93,8 +26,6 @@ const App = () => {
         route={route}
         subRoute={subRoute}
         handleSubRouteChange={handleSubRouteChange}
-        handleNewCustomer={handleNewCustomer}
-        handleNewItem={handleNewItem}
       />
     </div>
   );

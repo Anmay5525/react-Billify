@@ -5,6 +5,7 @@ export default function Filter(_ref) {
     "div",
     null,
     React.createElement("input", {
+      placeholder: "Filter by name",
       autoFocus: true,
       className: "filter-input",
       type: "text",

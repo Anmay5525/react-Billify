@@ -1,12 +1,59 @@
 const { useRef } = React;
 
-export default function NewItemForm({ handleNewItem }) {
+export default function NewItemForm({ handleSubRouteChange }) {
   const name = useRef();
   const amount = useRef();
   const description = useRef();
 
+  const handleNewItem = (e, name, amount, description) => {
+    e.preventDefault();
+
+    const url = "https://rzp-training.herokuapp.com/team1/items";
+
+    const data = {
+      name,
+      amount,
+      description,
+      currency: "INR",
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          alert(
+            "Something went wrong. Server responded with status " + res.status
+          );
+        }
+      })
+      .then((r) => {
+        if (r) {
+          alert("New item created");
+          handleSubRouteChange("list");
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
-    <div className="items-form">
+    <form
+      className="items-form"
+      onSubmit={(e) =>
+        handleNewItem(
+          e,
+          name.current.value,
+          amount.current.value,
+          description.current.value
+        )
+      }
+    >
       <div className="input-cnt">
         <div>Name</div>
         <input
@@ -40,19 +87,8 @@ export default function NewItemForm({ handleNewItem }) {
         ></textarea>
       </div>
       <div>
-        <button
-          className="items-add-btn"
-          onClick={() =>
-            handleNewItem(
-              name.current.value,
-              amount.current.value,
-              description.current.value
-            )
-          }
-        >
-          Add Item
-        </button>
+        <button className="items-add-btn">Add Item</button>
       </div>
-    </div>
+    </form>
   );
 }

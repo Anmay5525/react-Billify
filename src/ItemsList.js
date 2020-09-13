@@ -6,13 +6,21 @@ const { useEffect, useState } = React;
 const ItemsList = ({ handleSubRouteChange }) => {
   const [items, setItems] = useState(null);
 
+  const controller = new AbortController();
+  const signal = controller.signal;
+
   const getItems = () => {
-    fetch("https://rzp-training.herokuapp.com/team1/items")
+    fetch("https://rzp-training.herokuapp.com/team1/items", { signal })
       .then((res) => res.json())
       .then((r) => setItems(r))
       .catch((er) => console.log(er));
   };
-  useEffect(getItems, []);
+  useEffect(() => {
+    getItems();
+    return () => {
+      controller.abort();
+    };
+  }, []);
   const fields = ["name", "description", "amount", "currency"];
   if (items) {
     const data = items.items.map((item) => {
@@ -28,7 +36,10 @@ const ItemsList = ({ handleSubRouteChange }) => {
       <div className="content">
         <div className="items-title-container">
           <div className="items-title">Items</div>
-          <button className="items-new-btn" onClick={handleSubRouteChange}>
+          <button
+            className="items-new-btn"
+            onClick={() => handleSubRouteChange("new")}
+          >
             + New Item
           </button>
         </div>

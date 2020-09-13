@@ -7,9 +7,7 @@ import NewItemForm from "./NewItemForm.js";
 var RightPanel = function RightPanel(_ref) {
   var route = _ref.route,
       subRoute = _ref.subRoute,
-      handleSubRouteChange = _ref.handleSubRouteChange,
-      handleNewCustomer = _ref.handleNewCustomer,
-      handleNewItem = _ref.handleNewItem;
+      handleSubRouteChange = _ref.handleSubRouteChange;
 
   if (route === "Customers") {
     if (subRoute === "list") {
@@ -29,7 +27,7 @@ var RightPanel = function RightPanel(_ref) {
         React.createElement(
           "div",
           { className: "content", id: "Customers" },
-          React.createElement(NewCustomerForm, { handleNewCustomer: handleNewCustomer })
+          React.createElement(NewCustomerForm, { handleSubRouteChange: handleSubRouteChange })
         )
       );
     }
@@ -51,7 +49,7 @@ var RightPanel = function RightPanel(_ref) {
         React.createElement(
           "div",
           { className: "content", id: "Items" },
-          React.createElement(NewItemForm, { handleNewItem: handleNewItem })
+          React.createElement(NewItemForm, { handleSubRouteChange: handleSubRouteChange })
         )
       );
     }

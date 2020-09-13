@@ -26,69 +26,8 @@ var App = function App() {
     setSubRoute("list");
   };
 
-  var handleSubRouteChange = function handleSubRouteChange() {
-    setSubRoute("new");
-  };
-
-  var handleNewCustomer = function handleNewCustomer(name, email, phone) {
-    var url = "https://rzp-training.herokuapp.com/team1/customers";
-
-    var data = {
-      name: name,
-      email: email,
-      contact: phone
-    };
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }).then(function (res) {
-      if (res.ok) {
-        return res.json();
-      } else {
-        alert("Something went wrong. Server responded with status " + res.status);
-      }
-    }).then(function (r) {
-      if (r) {
-        setSubRoute("list");
-      }
-    }).catch(function (error) {
-      return console.log(error);
-    });
-  };
-
-  var handleNewItem = function handleNewItem(name, amount, description) {
-    var url = "https://rzp-training.herokuapp.com/team1/items";
-
-    var data = {
-      name: name,
-      amount: amount,
-      description: description,
-      currency: "INR"
-    };
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }).then(function (res) {
-      if (res.ok) {
-        return res.json();
-      } else {
-        alert("Something went wrong. Server responded with status " + res.status);
-      }
-    }).then(function (r) {
-      if (r) {
-        setSubRoute("list");
-      }
-    }).catch(function (error) {
-      return console.log(error);
-    });
+  var handleSubRouteChange = function handleSubRouteChange(str) {
+    setSubRoute(str);
   };
 
   return React.createElement(
@@ -98,9 +37,7 @@ var App = function App() {
     React.createElement(RightPanel, {
       route: route,
       subRoute: subRoute,
-      handleSubRouteChange: handleSubRouteChange,
-      handleNewCustomer: handleNewCustomer,
-      handleNewItem: handleNewItem
+      handleSubRouteChange: handleSubRouteChange
     })
   );
 };

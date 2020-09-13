@@ -16,8 +16,11 @@ var ItemsList = function ItemsList(_ref) {
       items = _useState2[0],
       setItems = _useState2[1];
 
+  var controller = new AbortController();
+  var signal = controller.signal;
+
   var getItems = function getItems() {
-    fetch("https://rzp-training.herokuapp.com/team1/items").then(function (res) {
+    fetch("https://rzp-training.herokuapp.com/team1/items", { signal: signal }).then(function (res) {
       return res.json();
     }).then(function (r) {
       return setItems(r);
@@ -25,7 +28,12 @@ var ItemsList = function ItemsList(_ref) {
       return console.log(er);
     });
   };
-  useEffect(getItems, []);
+  useEffect(function () {
+    getItems();
+    return function () {
+      controller.abort();
+    };
+  }, []);
   var fields = ["name", "description", "amount", "currency"];
   if (items) {
     var data = items.items.map(function (item) {
@@ -50,7 +58,12 @@ var ItemsList = function ItemsList(_ref) {
         ),
         React.createElement(
           "button",
-          { className: "items-new-btn", onClick: handleSubRouteChange },
+          {
+            className: "items-new-btn",
+            onClick: function onClick() {
+              return handleSubRouteChange("new");
+            }
+          },
           "+ New Item"
         )
       ),

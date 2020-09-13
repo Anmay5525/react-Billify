@@ -9,12 +9,15 @@ const CustomersList = ({ handleSubRouteChange }) => {
   const [filter, setFilter] = useState(false);
   const [filterString, setFilterString] = useState("");
 
-  const handleChange = (event) => {
+  const controller = new AbortController();
+  const signal = controller.signal;
+
+  const handleFilterChange = (event) => {
     setFilterString(event.target.value);
   };
 
   const getCustomers = () => {
-    fetch("https://rzp-training.herokuapp.com/team1/customers")
+    fetch("https://rzp-training.herokuapp.com/team1/customers", { signal })
       .then((res) => res.json())
       .then((r) => setCustomers(r))
       .catch((er) => console.log(er));
@@ -22,7 +25,9 @@ const CustomersList = ({ handleSubRouteChange }) => {
 
   useEffect(() => {
     getCustomers();
-    return () => console.log("unmounted");
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   const fields = ["name", "email", "contact", "created_at"];
@@ -48,13 +53,16 @@ const CustomersList = ({ handleSubRouteChange }) => {
         <div className="customers-title-container">
           <div className="customers-title">Customers</div>
 
-          <button className="customers-new-btn" onClick={handleSubRouteChange}>
+          <button
+            className="customers-new-btn"
+            onClick={() => handleSubRouteChange("new")}
+          >
             + New Customer
           </button>
         </div>
         <div>
           <div className="filter-container">
-            {filter ? <Filter handleChange={handleChange} /> : ""}
+            {filter ? <Filter handleChange={handleFilterChange} /> : ""}
             {filter ? (
               ""
             ) : (

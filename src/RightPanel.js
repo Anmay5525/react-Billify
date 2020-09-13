@@ -4,13 +4,7 @@ import InvoicesList from "./InvoicesList.js";
 import NewCustomerForm from "./NewCustomerForm.js";
 import NewItemForm from "./NewItemForm.js";
 
-const RightPanel = ({
-  route,
-  subRoute,
-  handleSubRouteChange,
-  handleNewCustomer,
-  handleNewItem,
-}) => {
+const RightPanel = ({ route, subRoute, handleSubRouteChange }) => {
   if (route === "Customers") {
     if (subRoute === "list") {
       return (
@@ -24,7 +18,7 @@ const RightPanel = ({
       return (
         <div className="right-panel">
           <div className="content" id="Customers">
-            <NewCustomerForm handleNewCustomer={handleNewCustomer} />
+            <NewCustomerForm handleSubRouteChange={handleSubRouteChange} />
           </div>
         </div>
       );
@@ -42,7 +36,7 @@ const RightPanel = ({
       return (
         <div className="right-panel">
           <div className="content" id="Items">
-            <NewItemForm handleNewItem={handleNewItem} />
+            <NewItemForm handleSubRouteChange={handleSubRouteChange} />
           </div>
         </div>
       );

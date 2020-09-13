@@ -14,8 +14,11 @@ var InvoicesList = function InvoicesList() {
       invoices = _useState2[0],
       setInvoices = _useState2[1];
 
+  var controller = new AbortController();
+  var signal = controller.signal;
+
   var getInvoices = function getInvoices() {
-    fetch("https://rzp-training.herokuapp.com/team1/invoices").then(function (res) {
+    fetch("https://rzp-training.herokuapp.com/team1/invoices", { signal: signal }).then(function (res) {
       return res.json();
     }).then(function (r) {
       return setInvoices(r);
@@ -23,7 +26,12 @@ var InvoicesList = function InvoicesList() {
       return console.log(er);
     });
   };
-  useEffect(getInvoices, []);
+  useEffect(function () {
+    getInvoices();
+    return function () {
+      controller.abort();
+    };
+  }, []);
   var fields = ["date", "customer", "status", "amount", "amount_due"];
   if (invoices) {
     var data = invoices.items.map(function (item) {
