@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import InvoicesFormItem from "./InvoicesFormItem";
+import Loader from "./Loader";
 
 export default function NewInvoiceForm({ handleSubRouteChange }) {
   const handleNewInvoice = (e) => {

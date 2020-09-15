@@ -46,8 +46,17 @@ const Table = ({ fields, data }) => {
 };
 
 Table.propTypes = {
-  fields: PropTypes.array.isRequired,
-  data: PropTypes.array.isRequired,
+  fields: PropTypes.arrayOf(PropTypes.string).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+        PropTypes.func,
+        PropTypes.instanceOf(Date),
+      ])
+    )
+  ).isRequired,
 };
 
 export default Table;

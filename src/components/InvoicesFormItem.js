@@ -26,5 +26,5 @@ export default function InvoicesFormItem({ item }) {
 }
 
 InvoicesFormItem.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.objectOf(PropTypes.string).isRequired,
 };
