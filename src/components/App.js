@@ -1,16 +1,11 @@
-// "use strict";
-
-// const e = React.createElement;
 import React, { useState } from "react";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
 import "../css/App.css";
 
-// const { useState } = React;
-
 const App = () => {
-  const [route, setRoute] = useState("Customers");
-  const [subRoute, setSubRoute] = useState("list");
+  const [route, setRoute] = useState("Invoices");
+  const [subRoute, setSubRoute] = useState("new");
 
   const handleRouteChange = (r) => {
     setRoute(r);
@@ -34,5 +29,3 @@ const App = () => {
 };
 
 export default App;
-// let domContainer = document.querySelector("#root");
-// ReactDOM.render(<App />, domContainer);

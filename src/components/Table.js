@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Table = ({ fields, data }) => {
   return (
@@ -42,6 +43,11 @@ const Table = ({ fields, data }) => {
       </table>
     </div>
   );
+};
+
+Table.propTypes = {
+  fields: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
 };
 
 export default Table;

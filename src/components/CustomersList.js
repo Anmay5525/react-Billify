@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Table from "./Table";
 import Loader from "./Loader";
 import Filter from "./Filter";
-
-// const { useEffect, useState } = React;
 
 const CustomersList = ({ handleSubRouteChange }) => {
   const [customers, setCustomers] = useState(null);
@@ -45,10 +44,10 @@ const CustomersList = ({ handleSubRouteChange }) => {
     });
 
     const filteredData = data.filter((element) => {
-      return String(element.name)
-        .toLowerCase()
-        .includes(filterString.toLowerCase());
+      return element.name.toLowerCase().includes(filterString.toLowerCase());
     });
+
+    // console.log(typeof filteredData, typeof fields);
 
     return (
       <div className="content">
@@ -56,6 +55,7 @@ const CustomersList = ({ handleSubRouteChange }) => {
           <div className="customers-title">Customers</div>
 
           <button
+            type="button"
             className="customers-new-btn"
             onClick={() => handleSubRouteChange("new")}
           >
@@ -68,20 +68,29 @@ const CustomersList = ({ handleSubRouteChange }) => {
             {filter ? (
               ""
             ) : (
-              <button className="filter-btn" onClick={() => setFilter(true)}>
+              <button
+                type="button"
+                className="filter-btn"
+                onClick={() => setFilter(true)}
+              >
                 Filter
               </button>
             )}
 
-            <button
-              className="filter-btn"
-              onClick={() => {
-                setFilter(false);
-                setFilterString("");
-              }}
-            >
-              X
-            </button>
+            {filter ? (
+              <button
+                type="button"
+                className="filter-btn"
+                onClick={() => {
+                  setFilter(false);
+                  setFilterString("");
+                }}
+              >
+                X
+              </button>
+            ) : (
+              ""
+            )}
           </div>
           <Table fields={fields} data={filteredData} />
         </div>
@@ -90,4 +99,9 @@ const CustomersList = ({ handleSubRouteChange }) => {
   }
   return <Loader />;
 };
+
+CustomersList.propTypes = {
+  handleSubRouteChange: PropTypes.func.isRequired,
+};
+
 export default CustomersList;

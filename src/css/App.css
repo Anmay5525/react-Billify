@@ -33,7 +33,7 @@ body {
 
 .left-panel .btn {
   padding: 10px 10px 10px 10px;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   width: 100%;
   border: none;
   outline: none;
@@ -63,8 +63,15 @@ body {
 }
 
 .input-cnt {
+  display: flex;
+  flex-direction: column;
   margin-right: 50px;
   margin-bottom: 10px;
+}
+
+.error {
+  font-size: 0.76em;
+  color: red;
 }
 
 .input {
@@ -73,6 +80,10 @@ body {
   transition: all 0.3s;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.input:valid {
+  border: 2px solid green;
 }
 
 .input:focus {
@@ -94,8 +105,9 @@ body {
   color: white;
   background-color: #5851d7;
   border: none;
-  padding: 7 15 7 15;
+  padding: 8 16 8 16;
   outline: none;
+  border-radius: 4px;
 }
 .filter-btn:hover {
   cursor: pointer;
@@ -122,15 +134,15 @@ body {
   color: white;
   background-color: #5851d7;
   border: none;
-  border-radius: 3px;
-  padding: 7 15 7 15;
+  border-radius: 4px;
+  padding: 8 16 8 16;
   transition: all 0.5s;
 }
 
 .invoices-new-btn:hover,
 .customers-new-btn:hover,
 .items-new-btn:hover {
-  transform: scale(1.07);
+  transform: scale(1.08);
   cursor: pointer;
 }
 /* 
@@ -207,6 +219,13 @@ th {
   margin-right: 50px;
   margin-top: 5px;
   padding-left: 8px;
+}
+
+/* invoices form */
+
+.invoicesFormItem {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Loader animation */

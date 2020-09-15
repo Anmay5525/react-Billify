@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Table from "./Table";
 import Loader from "./Loader";
 
-// const { useEffect, useState } = React;
-
-const InvoicesList = () => {
+const InvoicesList = ({ handleSubRouteChange }) => {
   const [invoices, setInvoices] = useState(null);
 
   const controller = new AbortController();
@@ -14,7 +13,6 @@ const InvoicesList = () => {
     fetch("https://rzp-training.herokuapp.com/team1/invoices", { signal })
       .then((res) => res.json())
       .then((r) => setInvoices(r))
-      // eslint-disable-next-line no-console
       .catch((er) => console.log(er));
   };
   useEffect(() => {
@@ -38,7 +36,13 @@ const InvoicesList = () => {
       <div className="content">
         <div className="invoices-title-container">
           <div className="invoices-title">Invoices</div>
-          <button className="invoices-new-btn">+ New Invoice</button>
+          <button
+            type="button"
+            className="invoices-new-btn"
+            onClick={() => handleSubRouteChange("new")}
+          >
+            + New Invoice
+          </button>
         </div>
         <Table fields={fields} data={data} />
       </div>
@@ -46,4 +50,9 @@ const InvoicesList = () => {
   }
   return <Loader />;
 };
+
+InvoicesList.propTypes = {
+  handleSubRouteChange: PropTypes.func.isRequired,
+};
+
 export default InvoicesList;

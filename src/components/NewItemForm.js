@@ -1,19 +1,16 @@
-import React, { useRef } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function NewItemForm({ handleSubRouteChange }) {
-  const name = useRef();
-  const amount = useRef();
-  const description = useRef();
-
-  const handleNewItem = (e, name, amount, description) => {
+  const handleNewItem = (e) => {
     e.preventDefault();
 
     const url = "https://rzp-training.herokuapp.com/team1/items";
 
     const data = {
-      name,
-      amount,
-      description,
+      name: e.target.name.value,
+      amount: e.target.amount.value * 100,
+      description: e.target.description.value,
       currency: "INR",
     };
 
@@ -28,7 +25,7 @@ export default function NewItemForm({ handleSubRouteChange }) {
         if (res.ok) {
           return res.json();
         }
-        alert(
+        return alert(
           `Something went wrong. Server responded with status ${res.status}`
         );
       })
@@ -42,52 +39,58 @@ export default function NewItemForm({ handleSubRouteChange }) {
   };
 
   return (
-    <form
-      className="items-form"
-      onSubmit={(e) =>
-        handleNewItem(
-          e,
-          name.current.value,
-          amount.current.value,
-          description.current.value
-        )
-      }
-    >
-      <div className="input-cnt">
-        <div>Name</div>
-        <input
-          ref={name}
-          className="input"
-          id="name"
-          type="text"
-          placeholder="Enter name of item"
-        />
-      </div>
+    <div className="content">
+      <form className="items-form" onSubmit={(e) => handleNewItem(e)}>
+        <div className="input-cnt">
+          <div>Name</div>
+          <input
+            className="input"
+            name="name"
+            type="text"
+            placeholder="Enter name of item"
+            required
+            maxLength="40"
+          />
+        </div>
 
-      <div className="input-cnt">
-        <div>Amount</div>
-        <input
-          ref={amount}
-          className="input"
-          type="number"
-          id="amount"
-          placeholder="Enter amount"
-        />
-      </div>
+        <div className="input-cnt">
+          <div>Amount</div>
+          <input
+            className="input"
+            type="text"
+            pattern="^[0-9]+"
+            name="amount"
+            placeholder="Enter amount"
+            required
+            onInput={(e) => {
+              if (e.target.validity.patternMismatch) {
+                e.target.setCustomValidity("Enter a valid amount!");
+              } else {
+                e.target.setCustomValidity("");
+              }
+            }}
+          />
+        </div>
 
-      <div className="input-cnt">
-        <div>Description</div>
-        <textarea
-          ref={description}
-          className="textarea"
-          id="description"
-          placeholder="Add description"
-          rows="4"
-        />
-      </div>
-      <div>
-        <button className="items-add-btn">Add Item</button>
-      </div>
-    </form>
+        <div className="input-cnt">
+          <div>Description</div>
+          <textarea
+            className="textarea"
+            name="description"
+            placeholder="Add description"
+            rows="4"
+          />
+        </div>
+        <div>
+          <button type="submit" className="items-add-btn">
+            Add Item
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
+
+NewItemForm.propTypes = {
+  handleSubRouteChange: PropTypes.func.isRequired,
+};

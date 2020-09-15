@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Table from "./Table";
 import Loader from "./Loader";
-
-// const { useEffect, useState } = React;
 
 const ItemsList = ({ handleSubRouteChange }) => {
   const [items, setItems] = useState(null);
@@ -14,7 +13,6 @@ const ItemsList = ({ handleSubRouteChange }) => {
     fetch("https://rzp-training.herokuapp.com/team1/items", { signal })
       .then((res) => res.json())
       .then((r) => setItems(r))
-      // eslint-disable-next-line no-console
       .catch((er) => console.log(er));
   };
   useEffect(() => {
@@ -39,6 +37,7 @@ const ItemsList = ({ handleSubRouteChange }) => {
         <div className="items-title-container">
           <div className="items-title">Items</div>
           <button
+            type="button"
             className="items-new-btn"
             onClick={() => handleSubRouteChange("new")}
           >
@@ -51,4 +50,9 @@ const ItemsList = ({ handleSubRouteChange }) => {
   }
   return <Loader />;
 };
+
+ItemsList.propTypes = {
+  handleSubRouteChange: PropTypes.func.isRequired,
+};
+
 export default ItemsList;

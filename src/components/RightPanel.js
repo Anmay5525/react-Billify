@@ -1,26 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
 import CustomersList from "./CustomersList";
 import ItemsList from "./ItemsList";
 import InvoicesList from "./InvoicesList";
 import NewCustomerForm from "./NewCustomerForm";
 import NewItemForm from "./NewItemForm";
+import NewInvoiceForm from "./NewInvoiceForm";
 
 const RightPanel = ({ route, subRoute, handleSubRouteChange }) => {
   if (route === "Customers") {
     if (subRoute === "list") {
       return (
         <div className="right-panel">
-          <div className="content" id="Customers">
-            <CustomersList handleSubRouteChange={handleSubRouteChange} />
-          </div>
+          <CustomersList handleSubRouteChange={handleSubRouteChange} />
         </div>
       );
     }
     return (
       <div className="right-panel">
-        <div className="content" id="Customers">
-          <NewCustomerForm handleSubRouteChange={handleSubRouteChange} />
-        </div>
+        <NewCustomerForm handleSubRouteChange={handleSubRouteChange} />
       </div>
     );
   }
@@ -28,17 +26,13 @@ const RightPanel = ({ route, subRoute, handleSubRouteChange }) => {
     if (subRoute === "list") {
       return (
         <div className="right-panel">
-          <div className="content" id="Items">
-            <ItemsList handleSubRouteChange={handleSubRouteChange} />
-          </div>
+          <ItemsList handleSubRouteChange={handleSubRouteChange} />
         </div>
       );
     }
     return (
       <div className="right-panel">
-        <div className="content" id="Items">
-          <NewItemForm handleSubRouteChange={handleSubRouteChange} />
-        </div>
+        <NewItemForm handleSubRouteChange={handleSubRouteChange} />
       </div>
     );
   }
@@ -46,15 +40,23 @@ const RightPanel = ({ route, subRoute, handleSubRouteChange }) => {
     if (subRoute === "list") {
       return (
         <div className="right-panel">
-          <div className="content" id="Invoices">
-            <InvoicesList />
-          </div>
+          <InvoicesList handleSubRouteChange={handleSubRouteChange} />
         </div>
       );
     }
-    return <div>Add Invoice</div>;
+    return (
+      <div className="right-panel">
+        <NewInvoiceForm handleSubRouteChange={handleSubRouteChange} />
+      </div>
+    );
   }
-  return "";
+  return <div>Invalid state</div>;
+};
+
+RightPanel.propTypes = {
+  route: PropTypes.string.isRequired,
+  subRoute: PropTypes.string.isRequired,
+  handleSubRouteChange: PropTypes.func.isRequired,
 };
 
 export default RightPanel;

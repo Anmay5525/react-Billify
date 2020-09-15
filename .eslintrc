@@ -10,7 +10,6 @@
   "rules": {
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/button-has-type": [0]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
