@@ -70,7 +70,7 @@ const CustomersList = ({ handleSubRouteChange }) => {
             ) : (
               <button
                 type="button"
-                className="filter-btn"
+                className="simple-btn"
                 onClick={() => setFilter(true)}
               >
                 Filter
@@ -80,7 +80,7 @@ const CustomersList = ({ handleSubRouteChange }) => {
             {filter ? (
               <button
                 type="button"
-                className="filter-btn"
+                className="simple-btn"
                 onClick={() => {
                   setFilter(false);
                   setFilterString("");

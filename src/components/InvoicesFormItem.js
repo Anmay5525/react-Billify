@@ -1,30 +1,56 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-export default function InvoicesFormItem({ item }) {
-  const [quantity, setQuantity] = useState(1);
-  const [amount, setAmount] = useState(item.price);
+export default function InvoicesFormItem({
+  index,
+  data,
+  handleQuantityChange,
+  handleDelete,
+}) {
   return (
     <tr className="tr">
-      <td>{item.name}</td>
+      <td>{data.name}</td>
       <td>
         <input
+          className="new-invoice-quantity"
           type="number"
           min="1"
-          max="3"
-          defaultValue={quantity}
+          max="5"
+          name="quantity"
+          defaultValue={data.quantity}
           onChange={(e) => {
-            setQuantity(e.target.value);
-            setAmount(item.price * e.target.value);
+            handleQuantityChange(e.target.value, index);
           }}
         />
       </td>
-      <td>{item.price}</td>
-      <td>{amount}</td>
+      <td>
+        <span>&#8377;</span>
+        {data.price}
+      </td>
+      <td>
+        <span>&#8377;</span>
+        {data.amount}
+        {/* <span style={{ marginLeft: "10" }}>X</span> */}
+      </td>
+      <td>
+        <button
+          style={{ fontSize: "0.8em" }}
+          type="button"
+          className="simple-btn"
+          onClick={() => handleDelete(index)}
+        >
+          Delete
+        </button>
+      </td>
     </tr>
   );
 }
 
 InvoicesFormItem.propTypes = {
-  item: PropTypes.objectOf(PropTypes.string).isRequired,
+  data: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ).isRequired,
+  handleQuantityChange: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };

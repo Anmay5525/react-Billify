@@ -12,20 +12,21 @@ body {
 }
 
 .left-panel {
-  height: 25rem;
+  height: 28rem;
   width: 10rem;
   padding-left: 10px;
   padding-top: 10px;
+  padding-bottom: 10px;
   border: 1px solid #ccc;
   overflow: hidden;
   box-shadow: -5px 5px 10px 1px silver;
 }
 
 .right-panel {
-  height: 25rem;
+  height: 28rem;
   width: 40rem;
   box-shadow: 5px 5px 10px 1px silver;
-  padding: 10px 10px 0px 10px;
+  padding: 10px 10px 10px 10px;
   border: 1px solid #ccc;
   overflow-y: scroll;
   background-color: rgba(0, 0, 194, 0.05);
@@ -80,6 +81,7 @@ body {
   transition: all 0.3s;
   margin-top: 5px;
   margin-bottom: 5px;
+  border: 1px solid #dddddd;
 }
 
 .input:valid {
@@ -101,7 +103,7 @@ body {
   padding: 5px 4px;
 }
 
-.filter-btn {
+.simple-btn {
   color: white;
   background-color: #5851d7;
   border: none;
@@ -109,7 +111,7 @@ body {
   outline: none;
   border-radius: 4px;
 }
-.filter-btn:hover {
+.simple-btn:hover {
   cursor: pointer;
 }
 
@@ -167,20 +169,20 @@ body {
 
 .tr {
   background-color: white;
-  font-size: 13px;
+  font-size: 12px;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.6);
 }
 
 thead {
-  font-size: 13px;
+  font-size: 14px;
 }
 
-td,
+.table td,
 th {
   padding: 20 10 20 10;
 }
-th {
+.table th {
   padding-bottom: 5px;
   text-align: left;
 }
@@ -197,14 +199,14 @@ th {
   color: white;
   background-color: #5851d7;
   border: none;
-  border-radius: 3px;
-  padding: 7 15 7 15;
+  border-radius: 4px;
+  padding: 8 16 8 16;
   transition: all 0.5s;
 }
 
 .customers-add-btn:hover,
 .items-add-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
   cursor: pointer;
 }
 
@@ -217,15 +219,140 @@ th {
 .textarea {
   width: 50%;
   margin-right: 50px;
-  margin-top: 5px;
+  margin-top: 6px;
   padding-left: 8px;
+  border: 1px solid #dddddd;
 }
 
-/* invoices form */
+/* new invoice form */
 
-.invoicesFormItem {
+.new-invoice-customer-details {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-content: center;
+  font-size: 0.8rem;
+  /* font-weight: 50; */
+  margin-bottom: 24;
+  margin-top: 20;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.billto-cont {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+  width: 24%;
+}
+
+.billto-details {
+  width: 100%;
+  background-color: white;
+  height: 100%;
+  /* padding: 10 10 10 10; */
+  border: 1px solid #dddddd;
+}
+
+.billto-change-btn {
+  background-color: transparent;
+  border: none;
+  color: #5851d7;
+  font-weight: bolder;
+}
+.billto-change-btn:hover {
+  cursor: pointer;
+}
+
+.date {
+  border: 1px solid #dddddd;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 6 6 6 6;
+}
+
+.new-invoice-quantity {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6 4 6 4;
+}
+.new-invoice-table-cont {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.new-invoice-table-cont .simple-btn {
+  margin-top: 10px;
+}
+
+.new-invoice-table {
+  margin: auto;
+  width: 90%;
+  border-collapse: collapse;
+  border-spacing: 0px 6px;
+}
+
+.new-invoice-table td {
+  padding: 6 20 6 10;
+}
+.new-invoice-table th {
+  padding-bottom: 6px;
+  text-align: left;
+  padding: 10 4 10 4;
+}
+.new-invoice-table .tr {
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-collapse: collapse;
+}
+​ .select-cnt {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.invoices-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.invoices-info {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 40%;
+  padding: 10 10 10 10;
+  border: 1px solid #dddddd;
+  height: max-content;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.92em;
+  margin-top: 20px;
+}
+
+.new-invoice-textarea {
+  width: 90%;
+  margin-right: 50px;
+  margin-top: 6px;
+  padding: 10 10 10 10;
+  border: 1px solid #dddddd;
+}
+
+.new-invoice-info-table {
+  font-size: 0.92em;
+  width: 100%;
+  border-collapse: collapse;
+  /* border-spacing: 0px 6px; */
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.new-invoice-info-table td {
+  padding: 6 10 0 6;
 }
 
 /* Loader animation */

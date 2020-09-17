@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
 import "../css/App.css";
 
 const App = () => {
   const [route, setRoute] = useState("Invoices");
-  const [subRoute, setSubRoute] = useState("new");
+  const [subRoute, setSubRoute] = useState("list");
 
   const handleRouteChange = (r) => {
     setRoute(r);
@@ -18,6 +20,8 @@ const App = () => {
 
   return (
     <div className="container">
+      <ToastContainer />
+
       <LeftPanel route={route} handleRouteChange={handleRouteChange} />
       <RightPanel
         route={route}

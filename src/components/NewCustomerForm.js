@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function NewCustomerForm({ handleSubRouteChange }) {
   const handleNewCustomer = (e) => {
@@ -27,13 +29,13 @@ export default function NewCustomerForm({ handleSubRouteChange }) {
         if (res.ok) {
           return res.json();
         }
-        return alert(
+        return toast.error(
           `Something went wrong. Server responded with status ${res.status}`
         );
       })
       .then((r) => {
         if (r) {
-          alert("New customer created");
+          toast.success("New customer created");
           handleSubRouteChange("list");
         }
       })

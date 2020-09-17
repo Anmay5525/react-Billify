@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function NewItemForm({ handleSubRouteChange }) {
   const handleNewItem = (e) => {
@@ -25,13 +27,13 @@ export default function NewItemForm({ handleSubRouteChange }) {
         if (res.ok) {
           return res.json();
         }
-        return alert(
+        return toast.error(
           `Something went wrong. Server responded with status ${res.status}`
         );
       })
       .then((r) => {
         if (r) {
-          alert("New item created");
+          toast.success("New item created");
           handleSubRouteChange("list");
         }
       })
