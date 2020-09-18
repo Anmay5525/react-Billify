@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
 import InvoicesFormItem from "./InvoicesFormItem";
 import Loader from "./Loader";
 import DropDown from "./DropDown";
 
 export default function NewInvoiceForm({ handleSubRouteChange }) {
+  const history = useHistory();
   const [isVisibleItem, setIsVisibleItem] = useState(false);
   const [isVisibleCustomer, setisVisibleCustomer] = useState(true);
   const [dummy, setDummy] = useState(false);
@@ -72,6 +74,7 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
         .then((r) => {
           if (r) {
             toast.success("New invoice created");
+            history.push("/Invoices");
             handleSubRouteChange("list");
           }
         })

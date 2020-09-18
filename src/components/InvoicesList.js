@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
 import Table from "./Table";
 import Loader from "./Loader";
 
@@ -36,13 +38,15 @@ const InvoicesList = ({ handleSubRouteChange }) => {
       <div className="content">
         <div className="invoices-title-container">
           <div className="invoices-title">Invoices</div>
-          <button
-            type="button"
-            className="invoices-new-btn"
-            onClick={() => handleSubRouteChange("new")}
-          >
-            + New Invoice
-          </button>
+          <Link to="/Invoices/New">
+            <button
+              type="button"
+              className="invoices-new-btn"
+              onClick={() => handleSubRouteChange("new")}
+            >
+              + New Invoice
+            </button>
+          </Link>
         </div>
         <Table fields={fields} data={data} />
       </div>

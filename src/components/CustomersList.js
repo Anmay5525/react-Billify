@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import Table from "./Table";
 import Loader from "./Loader";
 import Filter from "./Filter";
@@ -20,7 +21,6 @@ const CustomersList = ({ handleSubRouteChange }) => {
     fetch("https://rzp-training.herokuapp.com/team1/customers", { signal })
       .then((res) => res.json())
       .then((r) => setCustomers(r))
-      // eslint-disable-next-line no-console
       .catch((er) => console.log(er));
   };
 
@@ -47,20 +47,19 @@ const CustomersList = ({ handleSubRouteChange }) => {
       return element.name.toLowerCase().includes(filterString.toLowerCase());
     });
 
-    // console.log(typeof filteredData, typeof fields);
-
     return (
       <div className="content">
         <div className="customers-title-container">
           <div className="customers-title">Customers</div>
-
-          <button
-            type="button"
-            className="customers-new-btn"
-            onClick={() => handleSubRouteChange("new")}
-          >
-            + New Customer
-          </button>
+          <Link to="/Customers/New">
+            <button
+              type="button"
+              className="customers-new-btn"
+              onClick={() => handleSubRouteChange("new")}
+            >
+              + New Customer
+            </button>
+          </Link>
         </div>
         <div>
           <div className="filter-container">

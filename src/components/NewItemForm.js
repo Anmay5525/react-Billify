@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
 
 export default function NewItemForm({ handleSubRouteChange }) {
+  const history = useHistory();
   const handleNewItem = (e) => {
     e.preventDefault();
 
@@ -35,6 +37,7 @@ export default function NewItemForm({ handleSubRouteChange }) {
       .then((r) => {
         if (r) {
           toast.success("New item created");
+          history.push("/Items");
           handleSubRouteChange("list");
         } else {
           toast.error(`Something went Wrong !`);

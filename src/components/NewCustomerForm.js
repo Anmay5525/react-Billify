@@ -2,10 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
 
 export default function NewCustomerForm({ handleSubRouteChange }) {
+  const history = useHistory();
+
   const handleNewCustomer = (e) => {
     e.preventDefault();
+
     const url = "https://rzp-training.herokuapp.com/team1/customers";
 
     const name = e.target.name.value;
@@ -38,6 +42,7 @@ export default function NewCustomerForm({ handleSubRouteChange }) {
       .then((r) => {
         if (r) {
           toast.success("New customer created");
+          history.push("/Customers");
           handleSubRouteChange("list");
         } else {
           toast.error(`Something went wrong!`);
