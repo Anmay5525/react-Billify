@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin: 0px;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
@@ -7,7 +7,7 @@ body {
   align-content: center;
   justify-content: center;
   display: flex;
-  padding: 10 10 10 10;
+  padding: 10px 10px 10px 10px;
   margin-top: 100px;
 }
 
@@ -95,7 +95,7 @@ body {
 .filter-container {
   display: flex;
   justify-content: flex-end;
-  padding: 0 20 0 20;
+  padding: 0px 20px 0px 20px;
   flex-direction: row;
 }
 
@@ -107,7 +107,7 @@ body {
   color: white;
   background-color: #5851d7;
   border: none;
-  padding: 8 16 8 16;
+  padding: 8px 16px 8px 16px;
   outline: none;
   border-radius: 4px;
 }
@@ -120,7 +120,7 @@ body {
 .items-title-container {
   display: flex;
   justify-content: space-between;
-  padding: 10 20 10 20;
+  padding: 10px 20px 10px 20px;
 }
 
 .invoices-title,
@@ -137,7 +137,7 @@ body {
   background-color: #5851d7;
   border: none;
   border-radius: 4px;
-  padding: 8 16 8 16;
+  padding: 8px 16px 8px 16px;
   transition: all 0.5s;
 }
 
@@ -180,7 +180,7 @@ thead {
 
 .table td,
 th {
-  padding: 20 10 20 10;
+  padding: 20px 10px 20px 10px;
 }
 .table th {
   padding-bottom: 5px;
@@ -200,7 +200,7 @@ th {
   background-color: #5851d7;
   border: none;
   border-radius: 4px;
-  padding: 8 16 8 16;
+  padding: 8px 16px 8px 16px;
   transition: all 0.5s;
 }
 
@@ -232,8 +232,8 @@ th {
   align-content: center;
   font-size: 0.8rem;
   /* font-weight: 50; */
-  margin-bottom: 24;
-  margin-top: 20;
+  margin-bottom: 24px;
+  margin-top: 20px;
   color: rgba(0, 0, 0, 0.8);
 }
 
@@ -266,12 +266,12 @@ th {
 .date {
   border: 1px solid #dddddd;
   color: rgba(0, 0, 0, 0.8);
-  padding: 6 6 6 6;
+  padding: 6px 6px 6px 6px;
 }
 
 .new-invoice-quantity {
   border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 6 4 6 4;
+  padding: 6px 4px 6px 4px;
 }
 .new-invoice-table-cont {
   display: flex;
@@ -293,12 +293,12 @@ th {
 }
 
 .new-invoice-table td {
-  padding: 6 20 6 10;
+  padding: 6px 20px 6px 10px;
 }
 .new-invoice-table th {
   padding-bottom: 6px;
   text-align: left;
-  padding: 10 4 10 4;
+  padding: 10px 4px 10px 4px;
 }
 .new-invoice-table .tr {
   border-bottom: 1px solid #dddddd;
@@ -320,6 +320,7 @@ th {
   flex-direction: row;
   justify-content: space-evenly;
   align-content: center;
+  margin-top: 20px;
 }
 
 .invoices-info {
@@ -327,7 +328,7 @@ th {
   flex-direction: column;
   background-color: white;
   width: 40%;
-  padding: 10 10 10 10;
+  padding: 10px 10px 10px 10px;
   border: 1px solid #dddddd;
   height: max-content;
   color: rgba(0, 0, 0, 0.6);
@@ -339,7 +340,7 @@ th {
   width: 90%;
   margin-right: 50px;
   margin-top: 6px;
-  padding: 10 10 10 10;
+  padding: 10px 10px 10px 10px;
   border: 1px solid #dddddd;
 }
 
@@ -352,23 +353,26 @@ th {
 }
 
 .new-invoice-info-table td {
-  padding: 6 10 0 6;
+  padding: 6px 10px 0px 6px;
 }
 
 /* Loader animation */
 
 .loader-container {
   margin: auto;
+  height: 80px;
+  width: 80px;
 }
 
-.loader {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #5851d7;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
+circle {
+  fill: transparent;
+  stroke: #5851d7;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transform-origin: 50% 50%;
+  stroke-dashoffset: 283;
+  stroke-dasharray: 157;
   animation: spin 1s linear infinite;
-  margin: auto;
 }
 
 @keyframes spin {

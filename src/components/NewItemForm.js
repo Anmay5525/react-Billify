@@ -27,14 +27,17 @@ export default function NewItemForm({ handleSubRouteChange }) {
         if (res.ok) {
           return res.json();
         }
-        return toast.error(
-          `Something went wrong. Server responded with status ${res.status}`
-        );
+        // return toast.error(
+        //   `Something went wrong. Server responded with status ${res.status}`
+        // );
+        return null;
       })
       .then((r) => {
         if (r) {
           toast.success("New item created");
           handleSubRouteChange("list");
+        } else {
+          toast.error(`Something went Wrong !`);
         }
       })
       .catch((error) => console.log(error));

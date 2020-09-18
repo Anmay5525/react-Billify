@@ -6,7 +6,7 @@ import RightPanel from "./RightPanel";
 import "../css/App.css";
 
 const App = () => {
-  const [route, setRoute] = useState("Invoices");
+  const [route, setRoute] = useState("Customers");
   const [subRoute, setSubRoute] = useState("list");
 
   const handleRouteChange = (r) => {

@@ -29,17 +29,21 @@ export default function NewCustomerForm({ handleSubRouteChange }) {
         if (res.ok) {
           return res.json();
         }
-        return toast.error(
-          `Something went wrong. Server responded with status ${res.status}`
-        );
+        // return toast.error(
+        //   `Something went wrong. Server responded with status ${res.status}`
+        // );
+        // console.log(res);
+        return null;
       })
       .then((r) => {
         if (r) {
           toast.success("New customer created");
           handleSubRouteChange("list");
+        } else {
+          toast.error(`Something went wrong!`);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast(error));
   };
 
   return (

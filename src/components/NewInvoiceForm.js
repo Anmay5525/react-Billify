@@ -41,6 +41,8 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
       const inv = {
         customer_id: selectedCustomer.id,
         line_items: [],
+
+        // send date in seconds
         expire_by: Math.round(dueDate / 1000),
       };
       selectedItems.forEach((item) => {
@@ -97,6 +99,8 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
       ];
       setSelectedItems(obj);
       setIsVisibleItem(false);
+    } else {
+      toast.warn("Item already added. Please select some other item!");
     }
   };
 
@@ -173,7 +177,7 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
                     flexDirection: "column",
                     border: "none",
                     resize: "none",
-                    padding: "4 4 4 4",
+                    padding: "4px 4px 4px 4px",
                     fontSize: "0.9em",
                   }}
                 >
@@ -261,9 +265,9 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span>Notes</span>
             <textarea
+              style={{ width: "80%" }}
               className="new-invoice-textarea"
               name="notes"
-              cols="15"
               rows="4"
             />
           </div>
@@ -274,11 +278,11 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
                   return (
                     <tr key={item.amount + window.performance.now()}>
                       <td>{item.name}</td>
-                      <td>
+                      <td align="right">
                         <span>x</span>
                         {item.quantity}
                       </td>
-                      <td>
+                      <td align="right">
                         <span>&#8377;</span>
                         {item.amount}
                       </td>
@@ -291,7 +295,7 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
             <hr width="100%" />
             <div
               style={{
-                padding: "0 20 0 10",
+                padding: "0px 10px 0px 6px",
                 fontSize: "0.92em",
                 display: "flex",
                 justifyContent: "space-between",

@@ -21,7 +21,7 @@ const Table = ({ fields, data }) => {
             return (
               <tr
                 className="tr"
-                key={JSON.stringify(el) + new Date().getMilliseconds()}
+                key={JSON.stringify(el) + window.performance.now()}
               >
                 {fields.map((field) => {
                   return (
@@ -29,7 +29,7 @@ const Table = ({ fields, data }) => {
                       key={
                         JSON.stringify(el) +
                         JSON.stringify(field) +
-                        new Date().getMilliseconds()
+                        window.performance.now()
                       }
                     >
                       {el[field]}
