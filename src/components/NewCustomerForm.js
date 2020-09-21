@@ -1,10 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
 
-export default function NewCustomerForm({ handleSubRouteChange }) {
+export default function NewCustomerForm() {
   const history = useHistory();
 
   const handleNewCustomer = (e) => {
@@ -43,7 +42,7 @@ export default function NewCustomerForm({ handleSubRouteChange }) {
         if (r) {
           toast.success("New customer created");
           history.push("/Customers");
-          handleSubRouteChange("list");
+          // handleSubRouteChange("list");
         } else {
           toast.error(`Something went wrong!`);
         }
@@ -106,6 +105,6 @@ export default function NewCustomerForm({ handleSubRouteChange }) {
   );
 }
 
-NewCustomerForm.propTypes = {
-  handleSubRouteChange: PropTypes.func.isRequired,
-};
+// NewCustomerForm.propTypes = {
+//   handleSubRouteChange: PropTypes.func.isRequired,
+// };

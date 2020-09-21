@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Table from "./Table";
 import Loader from "./Loader";
 import Filter from "./Filter";
 
-const CustomersList = ({ handleSubRouteChange }) => {
+const CustomersList = () => {
   const [customers, setCustomers] = useState(null);
   const [filter, setFilter] = useState(false);
   const [filterString, setFilterString] = useState("");
@@ -52,11 +51,7 @@ const CustomersList = ({ handleSubRouteChange }) => {
         <div className="customers-title-container">
           <div className="customers-title">Customers</div>
           <Link to="/Customers/New">
-            <button
-              type="button"
-              className="customers-new-btn"
-              onClick={() => handleSubRouteChange("new")}
-            >
+            <button type="button" className="customers-new-btn">
               + New Customer
             </button>
           </Link>
@@ -99,8 +94,8 @@ const CustomersList = ({ handleSubRouteChange }) => {
   return <Loader />;
 };
 
-CustomersList.propTypes = {
-  handleSubRouteChange: PropTypes.func.isRequired,
-};
+// CustomersList.propTypes = {
+//   handleSubRouteChange: PropTypes.func.isRequired,
+// };
 
 export default CustomersList;

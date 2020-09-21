@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
@@ -7,7 +6,7 @@ import InvoicesFormItem from "./InvoicesFormItem";
 import Loader from "./Loader";
 import DropDown from "./DropDown";
 
-export default function NewInvoiceForm({ handleSubRouteChange }) {
+export default function NewInvoiceForm() {
   const history = useHistory();
   const [isVisibleItem, setIsVisibleItem] = useState(false);
   const [isVisibleCustomer, setisVisibleCustomer] = useState(true);
@@ -15,16 +14,7 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
   const [availableItems, setAvailableItems] = useState(null);
   const [availableCustomers, setAvailableCustomers] = useState(null);
   const [selectedCustomer, setselectedCustomer] = useState(null);
-  const [selectedItems, setSelectedItems] = useState([
-    // { name: "model S", price: 100, id: "sasfwe", quantity: 1, amount: 100 },
-    // {
-    //   name: "modelasdasdasd S",
-    //   price: 1003,
-    //   id: "hgjhg",
-    //   quantity: 1,
-    //   amount: 1003,
-    // },
-  ]);
+  const [selectedItems, setSelectedItems] = useState([]);
   const handleNewInvoice = (e) => {
     e.preventDefault();
 
@@ -75,7 +65,7 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
           if (r) {
             toast.success("New invoice created");
             history.push("/Invoices");
-            handleSubRouteChange("list");
+            // handleSubRouteChange("list");
           }
         })
         .catch((error) => console.log(error));
@@ -318,6 +308,6 @@ export default function NewInvoiceForm({ handleSubRouteChange }) {
   return <Loader />;
 }
 
-NewInvoiceForm.propTypes = {
-  handleSubRouteChange: PropTypes.func.isRequired,
-};
+// NewInvoiceForm.propTypes = {
+//   handleSubRouteChange: PropTypes.func.isRequired,
+// };

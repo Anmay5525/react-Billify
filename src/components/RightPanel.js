@@ -8,7 +8,7 @@ import NewCustomerForm from "./NewCustomerForm";
 import NewItemForm from "./NewItemForm";
 import NewInvoiceForm from "./NewInvoiceForm";
 
-const RightPanel = ({ handleSubRouteChange }) => {
+const RightPanel = () => {
   return (
     <Switch>
       <Route exact path="/">
@@ -16,34 +16,34 @@ const RightPanel = ({ handleSubRouteChange }) => {
       </Route>
       <Route exact path="/Customers">
         <div className="right-panel">
-          <CustomersList handleSubRouteChange={handleSubRouteChange} />
+          <CustomersList />
         </div>
       </Route>
       <Route path="/Customers/New">
         <div className="right-panel">
-          <NewCustomerForm handleSubRouteChange={handleSubRouteChange} />
+          <NewCustomerForm />
         </div>
       </Route>
 
       <Route exact path="/Items">
         <div className="right-panel">
-          <ItemsList handleSubRouteChange={handleSubRouteChange} />
+          <ItemsList />
         </div>
       </Route>
       <Route path="/Items/New">
         <div className="right-panel">
-          <NewItemForm handleSubRouteChange={handleSubRouteChange} />
+          <NewItemForm />
         </div>
       </Route>
 
       <Route exact path="/Invoices">
         <div className="right-panel">
-          <InvoicesList handleSubRouteChange={handleSubRouteChange} />
+          <InvoicesList />
         </div>
       </Route>
       <Route path="/Invoices/New">
         <div className="right-panel">
-          <NewInvoiceForm handleSubRouteChange={handleSubRouteChange} />
+          <NewInvoiceForm />
         </div>
       </Route>
     </Switch>
@@ -93,10 +93,10 @@ const RightPanel = ({ handleSubRouteChange }) => {
   // return <div>Invalid state</div>;
 };
 
-RightPanel.propTypes = {
-  // route: PropTypes.string.isRequired,
-  // subRoute: PropTypes.string.isRequired,
-  handleSubRouteChange: PropTypes.func.isRequired,
-};
+// RightPanel.propTypes = {
+// route: PropTypes.string.isRequired,
+// subRoute: PropTypes.string.isRequired,
+// handleSubRouteChange: PropTypes.func.isRequired,
+// };
 
 export default RightPanel;

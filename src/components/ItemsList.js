@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import Table from "./Table";
 import Loader from "./Loader";
 
-const ItemsList = ({ handleSubRouteChange }) => {
+const ItemsList = () => {
   const [items, setItems] = useState(null);
 
   const controller = new AbortController();
@@ -42,7 +41,7 @@ const ItemsList = ({ handleSubRouteChange }) => {
             <button
               type="button"
               className="items-new-btn"
-              onClick={() => handleSubRouteChange("new")}
+              // onClick={() => handleSubRouteChange("new")}
             >
               + New Item
             </button>
@@ -55,8 +54,8 @@ const ItemsList = ({ handleSubRouteChange }) => {
   return <Loader />;
 };
 
-ItemsList.propTypes = {
-  handleSubRouteChange: PropTypes.func.isRequired,
-};
+// ItemsList.propTypes = {
+//   handleSubRouteChange: PropTypes.func.isRequired,
+// };
 
 export default ItemsList;

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import Table from "./Table";
 import Loader from "./Loader";
 
-const InvoicesList = ({ handleSubRouteChange }) => {
+const InvoicesList = () => {
   const [invoices, setInvoices] = useState(null);
 
   const controller = new AbortController();
@@ -42,7 +41,7 @@ const InvoicesList = ({ handleSubRouteChange }) => {
             <button
               type="button"
               className="invoices-new-btn"
-              onClick={() => handleSubRouteChange("new")}
+              // onClick={() => handleSubRouteChange("new")}
             >
               + New Invoice
             </button>
@@ -55,8 +54,8 @@ const InvoicesList = ({ handleSubRouteChange }) => {
   return <Loader />;
 };
 
-InvoicesList.propTypes = {
-  handleSubRouteChange: PropTypes.func.isRequired,
-};
+// InvoicesList.propTypes = {
+//   handleSubRouteChange: PropTypes.func.isRequired,
+// };
 
 export default InvoicesList;

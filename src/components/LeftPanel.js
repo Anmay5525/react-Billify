@@ -1,16 +1,22 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+// import PropTypes from "prop-types";
+import { Link, useLocation } from "react-router-dom";
 
-const LeftPanel = ({ route, handleRouteChange }) => {
+const LeftPanel = () => {
+  // const [route, setRoute] = useState("Customers");
+  const location = useLocation();
+  const activeBtn = location.pathname.split("/")[1];
+  // const handleRouteChange = (r) => {
+  //   setRoute(r);
+  // };
   return (
     <div className="left-panel">
       <Link to="/Customers">
         <button
           type="button"
-          className={`btn ${route === "Customers" ? "active" : ""}`}
+          className={`btn ${activeBtn === "Customers" ? "active" : ""}`}
           id="Customers"
-          onClick={() => handleRouteChange("Customers")}
+          // onClick={() => handleRouteChange("Custmers")}
         >
           Customers
         </button>
@@ -18,9 +24,9 @@ const LeftPanel = ({ route, handleRouteChange }) => {
       <Link to="/Items">
         <button
           type="button"
-          className={`btn ${route === "Items" ? "active" : ""}`}
+          className={`btn ${activeBtn === "Items" ? "active" : ""}`}
           id="Items"
-          onClick={() => handleRouteChange("Items")}
+          // onClick={() => handleRouteChange("Itms")}
         >
           Items
         </button>
@@ -28,9 +34,9 @@ const LeftPanel = ({ route, handleRouteChange }) => {
       <Link to="/Invoices">
         <button
           type="button"
-          className={`btn ${route === "Invoices" ? "active" : ""}`}
+          className={`btn ${activeBtn === "Invoices" ? "active" : ""}`}
           id="Invoices"
-          onClick={() => handleRouteChange("Invoices")}
+          // onClick={() => handleRouteChange("Invoces")}
         >
           Invoices
         </button>
@@ -40,8 +46,8 @@ const LeftPanel = ({ route, handleRouteChange }) => {
 };
 
 LeftPanel.propTypes = {
-  route: PropTypes.string.isRequired,
-  handleRouteChange: PropTypes.func.isRequired,
+  // route: PropTypes.string.isRequired,
+  // handleRouteChange: PropTypes.func.isRequired,
 };
 
 export default LeftPanel;
