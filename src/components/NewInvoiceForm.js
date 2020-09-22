@@ -10,7 +10,6 @@ export default function NewInvoiceForm() {
   const history = useHistory();
   const [isVisibleItem, setIsVisibleItem] = useState(false);
   const [isVisibleCustomer, setisVisibleCustomer] = useState(true);
-  const [dummy, setDummy] = useState(false);
   const [availableItems, setAvailableItems] = useState(null);
   const [availableCustomers, setAvailableCustomers] = useState(null);
   const [selectedCustomer, setselectedCustomer] = useState(null);
@@ -43,8 +42,6 @@ export default function NewInvoiceForm() {
           quantity: item.quantity,
         });
       });
-
-      //   console.log(inv);
 
       fetch(url, {
         method: "POST",
@@ -110,12 +107,10 @@ export default function NewInvoiceForm() {
     cp.amount = Number((cp.quantity * cp.price).toFixed(2));
 
     setSelectedItems((prev) => {
-      // eslint-disable-next-line no-param-reassign
-      prev[index] = cp;
-      return prev;
+      const temp = [...prev];
+      temp[index] = cp;
+      return temp;
     });
-
-    setDummy((prev) => !prev);
   };
 
   const handleDelete = (index) => {
@@ -149,10 +144,8 @@ export default function NewInvoiceForm() {
       total = Number(total.toFixed(2));
     });
 
-    // console.log(selectedItems, total);
     return (
       <div className="content">
-        {/* <ToastContainer /> */}
         <form onSubmit={(e) => handleNewInvoice(e)}>
           <div className="invoices-title-container">
             <div className="invoices-title">Invoices</div>
