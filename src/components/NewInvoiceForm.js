@@ -222,7 +222,7 @@ export default function NewInvoiceForm() {
                       data={item}
                       handleQuantityChange={handleQuantityChange}
                       handleDelete={handleDelete}
-                      key={item.name + window.performance.now()}
+                      key={item.name}
                     />
                   );
                 })}
@@ -262,7 +262,7 @@ export default function NewInvoiceForm() {
               <tbody>
                 {selectedItems.map((item) => {
                   return (
-                    <tr key={item.amount + window.performance.now()}>
+                    <tr key={item.amount}>
                       <td>{item.name}</td>
                       <td align="right">
                         <span>x</span>
