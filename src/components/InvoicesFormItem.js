@@ -19,7 +19,11 @@ export default function InvoicesFormItem({
           name="quantity"
           defaultValue={data.quantity}
           onChange={(e) => {
-            handleQuantityChange(e.target.value, index);
+            if (e.target.value <= 5) {
+              handleQuantityChange(e.target.value, index);
+            } else {
+              e.target.value = 5;
+            }
           }}
         />
       </td>

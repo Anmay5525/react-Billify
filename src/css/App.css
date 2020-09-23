@@ -272,6 +272,7 @@ th {
 .new-invoice-quantity {
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 6px 4px 6px 4px;
+  width: 50%;
 }
 .new-invoice-table-cont {
   display: flex;
