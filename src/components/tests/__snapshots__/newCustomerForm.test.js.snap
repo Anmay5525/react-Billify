@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`newCustomerForm runs without crashing 1`] = `
+<div
+  className="content"
+>
+  <form
+    className="customers-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="input-cnt"
+    >
+      <div>
+        Name
+      </div>
+      <input
+        className="input"
+        maxLength="25"
+        name="name"
+        placeholder="Enter name of customer"
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="input-cnt"
+    >
+      <div>
+        Email
+      </div>
+      <input
+        className="input"
+        maxLength="30"
+        name="email"
+        placeholder="Enter email"
+        required={true}
+        type="email"
+      />
+    </div>
+    <div
+      className="input-cnt"
+    >
+      <div>
+        Phone No.
+      </div>
+      <input
+        className="input"
+        name="phone"
+        onInput={[Function]}
+        pattern="^[0-9]{10}$"
+        placeholder="Enter phone no."
+        required={true}
+        type="text"
+      />
+    </div>
+    <div>
+      <button
+        className="customers-add-btn"
+        type="submit"
+      >
+        Add Customer
+      </button>
+    </div>
+  </form>
+</div>
+`;
