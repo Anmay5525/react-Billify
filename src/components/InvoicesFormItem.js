@@ -13,18 +13,14 @@ export default function InvoicesFormItem({
       <td align="center">
         <input
           className="new-invoice-quantity"
-          type="text"
+          type="number"
           name="quantity"
-          pattern="^[1-9]*"
-          maxLength="2"
-          value={data.quantity}
-          onChange={(e) => {
-            if (Number(e.target.value) <= 5) {
-              handleQuantityChange(Number(e.target.value), index);
-            } else {
-              e.target.value = 5;
-              handleQuantityChange(Number(e.target.value), index);
-            }
+          min="1"
+          max="5"
+          defaultValue={data.quantity}
+          required
+          onInput={(e) => {
+            handleQuantityChange(Number(e.target.value), index);
           }}
         />
       </td>
