@@ -70,10 +70,22 @@ describe('Testing ItemsList component if it', () => {
     fetch.mockResponseOnce(JSON.stringify(itemsListData));
     const container = mount(<Router><ItemsList /></Router>);
     await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 0));
+      (res) => setTimeout(res, 0);
     });
     container.update();
     expect(container.html()).toMatchSnapshot();
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it('handles fetch errors', async () => {
+    fetch.mockRejectOnce(['Error', {status: 200}]);
+    const container = mount(<Router><ItemsList /></Router>);
+    await act(async () => {
+      (res) => setTimeout(res, 0);
+    });
+    container.update();
+    expect(container.html()).toMatchSnapshot();
+    expect(fetch).toHaveBeenCalledTimes(2);
   });
 
 });

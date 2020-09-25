@@ -103,11 +103,11 @@ const invoicesListData = {
 //   }, 500);
 // });
 
-beforeEach(() => {
-  fetch.resetMocks();
-});
-
 describe('Testing InvoicesList component if it', () => {
+
+  beforeEach(() => {
+    fetch.resetMocks();
+  });
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -124,21 +124,22 @@ describe('Testing InvoicesList component if it', () => {
     fetch.mockResponseOnce(JSON.stringify(invoicesListData));
     const container = mount(<Router><InvoicesList /></Router>);
     await act(async () => {
-      await new Promise((res) => setTimeout(res, 0));
+      (res) => setTimeout(res, 0);
     });
     container.update();
     expect(container.html()).toMatchSnapshot();
-    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenCalledTimes(1);
   });
 
   it('handles fetch errors', async () => {
     fetch.mockRejectOnce(['Error', {status: 200}]);
     const container = mount(<Router><InvoicesList /></Router>);
     await act(async () => {
-      await new Promise((res) => setTimeout(res, 0));
+      (res) => setTimeout(res, 0);
     });
     container.update();
     expect(container.html()).toMatchSnapshot();
+    expect(fetch).toHaveBeenCalledTimes(2);
   });
 
 });
