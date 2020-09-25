@@ -17,7 +17,7 @@ export default function InvoicesFormItem({
           min="1"
           max="5"
           name="quantity"
-          defaultValue={data.quantity}
+          value={data.quantity}
           onChange={(e) => {
             handleQuantityChange(e.target.value, index);
           }}

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`newItemForm renders without crashing 1`] = `
+<div
+  className="content"
+>
+  <form
+    className="items-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="input-cnt"
+    >
+      <div>
+        Name
+      </div>
+      <input
+        className="input"
+        maxLength="40"
+        name="name"
+        placeholder="Enter name of item"
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="input-cnt"
+    >
+      <div>
+        Amount
+      </div>
+      <input
+        className="input"
+        name="amount"
+        onInput={[Function]}
+        pattern="^[0-9]+"
+        placeholder="Enter amount"
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="input-cnt"
+    >
+      <div>
+        Description
+      </div>
+      <textarea
+        className="textarea"
+        name="description"
+        placeholder="Add description"
+        rows="4"
+      />
+    </div>
+    <div>
+      <button
+        className="items-add-btn"
+        type="submit"
+      >
+        Add Item
+      </button>
+    </div>
+  </form>
+</div>
+`;
