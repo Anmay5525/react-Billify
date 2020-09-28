@@ -85,7 +85,6 @@ describe('Testing ItemsList component if it', () => {
     });
     container.update();
     expect(container.html()).toMatchSnapshot();
-    expect(fetch).toHaveBeenCalledTimes(2);
   });
 
 });
