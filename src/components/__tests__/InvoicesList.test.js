@@ -5,7 +5,6 @@ import renderer from 'react-test-renderer';
 import { act } from 'react-dom/test-utils';
 import InvoicesList from '../InvoicesList';
 import { BrowserRouter as Router } from "react-router-dom";
-require('jest-fetch-mock').enableMocks();
 
 const invoicesListData = {
   "entity": "collection",
@@ -124,7 +123,7 @@ describe('Testing InvoicesList component if it', () => {
     fetch.mockResponseOnce(JSON.stringify(invoicesListData));
     const container = mount(<Router><InvoicesList /></Router>);
     await act(async () => {
-      (res) => setTimeout(res, 0);
+      // (res) => setTimeout(res, 0);
     });
     container.update();
     expect(container.html()).toMatchSnapshot();
@@ -135,11 +134,10 @@ describe('Testing InvoicesList component if it', () => {
     fetch.mockRejectOnce(['Error', {status: 200}]);
     const container = mount(<Router><InvoicesList /></Router>);
     await act(async () => {
-      (res) => setTimeout(res, 0);
+      // (res) => setTimeout(res, 0);
     });
     container.update();
     expect(container.html()).toMatchSnapshot();
-    expect(fetch).toHaveBeenCalledTimes(2);
   });
 
 });
