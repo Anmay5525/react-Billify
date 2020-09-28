@@ -122,9 +122,7 @@ describe('Testing InvoicesList component if it', () => {
   it('makes fetch calls', async () => {
     fetch.mockResponseOnce(JSON.stringify(invoicesListData));
     const container = mount(<Router><InvoicesList /></Router>);
-    await act(async () => {
-      // (res) => setTimeout(res, 0);
-    });
+    await act(async () => { });
     container.update();
     expect(container.html()).toMatchSnapshot();
     expect(fetch).toHaveBeenCalledTimes(1);
@@ -133,11 +131,43 @@ describe('Testing InvoicesList component if it', () => {
   it('handles fetch errors', async () => {
     fetch.mockRejectOnce(['Error', {status: 200}]);
     const container = mount(<Router><InvoicesList /></Router>);
-    await act(async () => {
-      // (res) => setTimeout(res, 0);
-    });
+    await act(async () => { });
     container.update();
     expect(container.html()).toMatchSnapshot();
+  });
+
+  it('displays correct button type', async () => {
+    fetch.mockResponseOnce(JSON.stringify(invoicesListData));
+    const container = mount(<Router><InvoicesList /></Router>);
+    await act(async () => { });
+    container.update();
+    expect(container.find('button').at(0).type()).toEqual('button');
+  });
+
+  it('displays correct table columns', async () => {
+    fetch.mockResponseOnce(JSON.stringify(invoicesListData));
+    const container = mount(<Router><InvoicesList /></Router>);
+    await act(async () => { });
+    container.update();
+    const tr0 = container.find('tr').at(0);
+    expect(tr0.childAt(0).contains('DATE')).toEqual(true);
+    expect(tr0.childAt(1).contains('CUSTOMER')).toEqual(true);
+    expect(tr0.childAt(2).contains('STATUS')).toEqual(true);
+    expect(tr0.childAt(3).contains('AMOUNT')).toEqual(true);
+    expect(tr0.childAt(4).contains('AMOUNT DUE')).toEqual(true);
+  });
+
+  it('displays correct table data', async () => {
+    fetch.mockResponseOnce(JSON.stringify(invoicesListData));
+    const container = mount(<Router><InvoicesList /></Router>);
+    await act(async () => { });
+    container.update();
+    const tr1 = container.find('tr').at(1);
+    expect(tr1.childAt(0).contains('Fri Sep 25 2020')).toEqual(true);
+    expect(tr1.childAt(1).contains('Parmanad')).toEqual(true);
+    expect(tr1.childAt(2).contains('ISSUED')).toEqual(true);
+    expect(tr1.childAt(3).contains(300)).toEqual(true);
+    expect(tr1.childAt(4).contains(300)).toEqual(true);
   });
 
 });

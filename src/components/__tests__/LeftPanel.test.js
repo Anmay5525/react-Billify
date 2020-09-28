@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount, render } from 'enzyme';
 import renderer from 'react-test-renderer';
-import { act } from 'react-dom/test-utils';
 import LeftPanel from '../LeftPanel';
 import { BrowserRouter as Router, MemoryRouter} from "react-router-dom";
 

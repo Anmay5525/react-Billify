@@ -87,4 +87,40 @@ describe('Testing ItemsList component if it', () => {
     expect(container.html()).toMatchSnapshot();
   });
 
+  it('displays correct button type', async () => {
+    fetch.mockResponseOnce(JSON.stringify(itemsListData));
+    const container = mount(<Router><ItemsList /></Router>);
+    await act(async () => { });
+    container.update();
+    expect(container.find('button').at(0).type()).toEqual('button');
+  });
+
+  it('displays correct table columns', async () => {
+    fetch.mockResponseOnce(JSON.stringify(itemsListData));
+    const container = mount(<Router><ItemsList /></Router>);
+    await act(async () => { });
+    container.update();
+    const tr0 = container.find('tr').at(0);
+    expect(tr0.childAt(0).contains('NAME')).toEqual(true);
+    expect(tr0.childAt(1).contains('DESCRIPTION')).toEqual(true);
+    expect(tr0.childAt(2).contains('AMOUNT')).toEqual(true);
+    expect(tr0.childAt(3).contains('CURRENCY')).toEqual(true);
+  });
+
+  it('displays correct table DATA', async () => {
+    fetch.mockResponseOnce(JSON.stringify(itemsListData));
+    const container = mount(<Router><ItemsList /></Router>);
+    await act(async () => { });
+    container.update();
+    const [tr1, tr2] = [container.find('tr').at(1), container.find('tr').at(2)];
+    expect(tr1.childAt(0).contains('Kora Kagaz')).toEqual(true);
+    expect(tr1.childAt(1).children().debug().length).toEqual(0);
+    expect(tr1.childAt(2).contains(10)).toEqual(true);
+    expect(tr1.childAt(3).contains('INR')).toEqual(true);
+    expect(tr2.childAt(0).contains('disc')).toEqual(true);
+    expect(tr2.childAt(1).contains('disc')).toEqual(true);
+    expect(tr2.childAt(2).contains(300)).toEqual(true);
+    expect(tr2.childAt(3).contains('INR')).toEqual(true);
+  });
+
 });
