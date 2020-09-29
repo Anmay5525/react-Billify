@@ -10,16 +10,17 @@ export default function InvoicesFormItem({
   return (
     <tr className="tr">
       <td>{data.name}</td>
-      <td>
+      <td align="center">
         <input
           className="new-invoice-quantity"
           type="number"
+          name="quantity"
           min="1"
           max="5"
-          name="quantity"
-          value={data.quantity}
-          onChange={(e) => {
-            handleQuantityChange(e.target.value, index);
+          defaultValue={data.quantity}
+          required
+          onInput={(e) => {
+            handleQuantityChange(Number(e.target.value), index);
           }}
         />
       </td>
