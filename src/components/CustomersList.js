@@ -12,7 +12,7 @@ const CustomersList = () => {
   const controller = new AbortController();
   const { signal } = controller;
 
-  const handleFilterChange = (event) => {
+  function handleFilterChange(event) {
     setFilterString(event.target.value);
   };
 

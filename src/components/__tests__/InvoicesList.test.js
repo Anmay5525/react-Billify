@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
 import { act } from 'react-dom/test-utils';
 import InvoicesList from '../InvoicesList';
 import { BrowserRouter as Router } from "react-router-dom";
@@ -89,23 +88,16 @@ const invoicesListData = {
   ]
 };
 
-// it('makes fetch calls', async (done) => {
-//   fetch.mockResponse(JSON.stringify(invoiceListData));
-//   // await act(async () => {container = mount(<Router><InvoicesList/></Router>)});
-//   // expect(container.debug()).toMatchSnapshot();
-//   let container;
-//   await act(async() => container = mount(<Router><InvoicesList/></Router>));
-//   setTimeout(() => {
-//     // expectations here
-//     expect(container.html()).toMatchSnapshot();
-//     done();
-//   }, 500);
-// });
-
 describe('Testing InvoicesList component if it', () => {
 
-  beforeEach(() => {
+  let container;
+
+  beforeEach(async () => {
     fetch.resetMocks();
+    fetch.mockResponseOnce(JSON.stringify(invoicesListData));
+    container = mount(<Router><InvoicesList /></Router>);
+    await act(async () => { });
+    container.update();
   });
 
   it('renders without crashing', () => {
@@ -114,18 +106,7 @@ describe('Testing InvoicesList component if it', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('renders loader', () => {
-    const tree = renderer.create(<InvoicesList></InvoicesList>).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('makes fetch calls', async () => {
-    fetch.mockResponseOnce(JSON.stringify(invoicesListData));
-    const container = mount(<Router><InvoicesList /></Router>);
-    await act(async () => {
-      // (res) => setTimeout(res, 0);
-    });
-    container.update();
     expect(container.html()).toMatchSnapshot();
     expect(fetch).toHaveBeenCalledTimes(1);
   });
@@ -133,11 +114,36 @@ describe('Testing InvoicesList component if it', () => {
   it('handles fetch errors', async () => {
     fetch.mockRejectOnce(['Error', {status: 200}]);
     const container = mount(<Router><InvoicesList /></Router>);
-    await act(async () => {
-      // (res) => setTimeout(res, 0);
-    });
+    await act(async () => { });
     container.update();
     expect(container.html()).toMatchSnapshot();
+  });
+
+  it('displays correct button type', async () => {
+    expect(container.find('.invoices-new-btn').prop('type')).toEqual('button');
+  });
+
+  it('displays correct number of table components', async () => {
+    expect(container.find('table')).toHaveLength(1);
+    expect(container.find('tr')).toHaveLength(2);
+  });
+
+  it('displays correct table columns', async () => {
+    const tr0 = container.find('tr').at(0);
+    expect(tr0.childAt(0).contains('DATE')).toEqual(true);
+    expect(tr0.childAt(1).contains('CUSTOMER')).toEqual(true);
+    expect(tr0.childAt(2).contains('STATUS')).toEqual(true);
+    expect(tr0.childAt(3).contains('AMOUNT')).toEqual(true);
+    expect(tr0.childAt(4).contains('AMOUNT DUE')).toEqual(true);
+  });
+
+  it('displays correct table data', async () => {
+    const tr1 = container.find('tr').at(1);
+    expect(tr1.childAt(0).contains('Fri Sep 25 2020')).toEqual(true);
+    expect(tr1.childAt(1).contains('Parmanad')).toEqual(true);
+    expect(tr1.childAt(2).contains('ISSUED')).toEqual(true);
+    expect(tr1.childAt(3).contains(300)).toEqual(true);
+    expect(tr1.childAt(4).contains(300)).toEqual(true);
   });
 
 });

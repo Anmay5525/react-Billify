@@ -1,12 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing Filter component if it matches snapshot 1`] = `
-<div>
-  <input
-    className="filter-input"
-    onChange={[Function]}
-    placeholder="Filter by name"
-    type="text"
-  />
-</div>
+"<Filter handleChange={[Function: handleChange]}>
+  <div>
+    <input placeholder=\\"Filter by name\\" className=\\"filter-input\\" type=\\"text\\" onChange={[Function: handleChange]} />
+  </div>
+</Filter>"
 `;

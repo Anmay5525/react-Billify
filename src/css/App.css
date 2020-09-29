@@ -272,6 +272,7 @@ th {
 .new-invoice-quantity {
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 6px 4px 6px 4px;
+  width: 50%;
 }
 .new-invoice-table-cont {
   display: flex;
@@ -297,8 +298,8 @@ th {
 }
 .new-invoice-table th {
   padding-bottom: 6px;
-  text-align: left;
-  padding: 10px 4px 10px 4px;
+  /* text-align: left; */
+  padding: 10px 30px 10px 4px;
 }
 .new-invoice-table .tr {
   border-bottom: 1px solid #dddddd;

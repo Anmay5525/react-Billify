@@ -1,6 +1,6 @@
+import { mount } from 'enzyme';
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
-import renderer from 'react-test-renderer';
 import Filter from '../Filter';
 
 describe('Testing Filter component if it', () => {
@@ -12,8 +12,8 @@ describe('Testing Filter component if it', () => {
   });
 
   it('matches snapshot', () => {
-    const tree = renderer.create(<Filter handleChange={() => {}}></Filter>).toJSON();
-    expect(tree).toMatchSnapshot();
+    const container = mount(<Filter handleChange={() => {}}/>);
+    expect(container.debug()).toMatchSnapshot(); 
   });
 
 });

@@ -1,130 +1,115 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing LeftPanel component if it makes Customers active 1`] = `
-<div
-  className="left-panel"
->
-  <a
-    href="/Customers"
-    onClick={[Function]}
-  >
-    <button
-      className="btn active"
-      id="Customers"
-      type="button"
-    >
-      Customers
-    </button>
-  </a>
-  <a
-    href="/Items"
-    onClick={[Function]}
-  >
-    <button
-      className="btn "
-      id="Items"
-      type="button"
-    >
-      Items
-    </button>
-  </a>
-  <a
-    href="/Invoices"
-    onClick={[Function]}
-  >
-    <button
-      className="btn "
-      id="Invoices"
-      type="button"
-    >
-      Invoices
-    </button>
-  </a>
-</div>
+exports[`Testing LeftPanel component if it matches Customers active snapshot 1`] = `
+"<MemoryRouter initialEntries={{...}}>
+  <Router history={{...}}>
+    <LeftPanel>
+      <div className=\\"left-panel\\">
+        <Link to=\\"/Customers\\">
+          <LinkAnchor href=\\"/Customers\\" navigate={[Function: navigate]}>
+            <a href=\\"/Customers\\" onClick={[Function: onClick]}>
+              <button type=\\"button\\" className=\\"btn active\\" id=\\"Customers\\">
+                Customers
+              </button>
+            </a>
+          </LinkAnchor>
+        </Link>
+        <Link to=\\"/Items\\">
+          <LinkAnchor href=\\"/Items\\" navigate={[Function: navigate]}>
+            <a href=\\"/Items\\" onClick={[Function: onClick]}>
+              <button type=\\"button\\" className=\\"btn \\" id=\\"Items\\">
+                Items
+              </button>
+            </a>
+          </LinkAnchor>
+        </Link>
+        <Link to=\\"/Invoices\\">
+          <LinkAnchor href=\\"/Invoices\\" navigate={[Function: navigate]}>
+            <a href=\\"/Invoices\\" onClick={[Function: onClick]}>
+              <button type=\\"button\\" className=\\"btn \\" id=\\"Invoices\\">
+                Invoices
+              </button>
+            </a>
+          </LinkAnchor>
+        </Link>
+      </div>
+    </LeftPanel>
+  </Router>
+</MemoryRouter>"
 `;
 
-exports[`Testing LeftPanel component if it makes Invoices active 1`] = `
-<div
-  className="left-panel"
->
-  <a
-    href="/Customers"
-    onClick={[Function]}
-  >
-    <button
-      className="btn "
-      id="Customers"
-      type="button"
-    >
-      Customers
-    </button>
-  </a>
-  <a
-    href="/Items"
-    onClick={[Function]}
-  >
-    <button
-      className="btn "
-      id="Items"
-      type="button"
-    >
-      Items
-    </button>
-  </a>
-  <a
-    href="/Invoices"
-    onClick={[Function]}
-  >
-    <button
-      className="btn active"
-      id="Invoices"
-      type="button"
-    >
-      Invoices
-    </button>
-  </a>
-</div>
+exports[`Testing LeftPanel component if it matches Invoices active snapshot 1`] = `
+"<MemoryRouter initialEntries={{...}}>
+  <Router history={{...}}>
+    <LeftPanel>
+      <div className=\\"left-panel\\">
+        <Link to=\\"/Customers\\">
+          <LinkAnchor href=\\"/Customers\\" navigate={[Function: navigate]}>
+            <a href=\\"/Customers\\" onClick={[Function: onClick]}>
+              <button type=\\"button\\" className=\\"btn \\" id=\\"Customers\\">
+                Customers
+              </button>
+            </a>
+          </LinkAnchor>
+        </Link>
+        <Link to=\\"/Items\\">
+          <LinkAnchor href=\\"/Items\\" navigate={[Function: navigate]}>
+            <a href=\\"/Items\\" onClick={[Function: onClick]}>
+              <button type=\\"button\\" className=\\"btn \\" id=\\"Items\\">
+                Items
+              </button>
+            </a>
+          </LinkAnchor>
+        </Link>
+        <Link to=\\"/Invoices\\">
+          <LinkAnchor href=\\"/Invoices\\" navigate={[Function: navigate]}>
+            <a href=\\"/Invoices\\" onClick={[Function: onClick]}>
+              <button type=\\"button\\" className=\\"btn active\\" id=\\"Invoices\\">
+                Invoices
+              </button>
+            </a>
+          </LinkAnchor>
+        </Link>
+      </div>
+    </LeftPanel>
+  </Router>
+</MemoryRouter>"
 `;
 
-exports[`Testing LeftPanel component if it makes Items active 1`] = `
-<div
-  className="left-panel"
->
-  <a
-    href="/Customers"
-    onClick={[Function]}
-  >
-    <button
-      className="btn "
-      id="Customers"
-      type="button"
-    >
-      Customers
-    </button>
-  </a>
-  <a
-    href="/Items"
-    onClick={[Function]}
-  >
-    <button
-      className="btn active"
-      id="Items"
-      type="button"
-    >
-      Items
-    </button>
-  </a>
-  <a
-    href="/Invoices"
-    onClick={[Function]}
-  >
-    <button
-      className="btn "
-      id="Invoices"
-      type="button"
-    >
-      Invoices
-    </button>
-  </a>
-</div>
+exports[`Testing LeftPanel component if it matches Items active snapshot 1`] = `
+"<MemoryRouter initialEntries={{...}}>
+  <Router history={{...}}>
+    <LeftPanel>
+      <div className=\\"left-panel\\">
+        <Link to=\\"/Customers\\">
+          <LinkAnchor href=\\"/Customers\\" navigate={[Function: navigate]}>
+            <a href=\\"/Customers\\" onClick={[Function: onClick]}>
+              <button type=\\"button\\" className=\\"btn \\" id=\\"Customers\\">
+                Customers
+              </button>
+            </a>
+          </LinkAnchor>
+        </Link>
+        <Link to=\\"/Items\\">
+          <LinkAnchor href=\\"/Items\\" navigate={[Function: navigate]}>
+            <a href=\\"/Items\\" onClick={[Function: onClick]}>
+              <button type=\\"button\\" className=\\"btn active\\" id=\\"Items\\">
+                Items
+              </button>
+            </a>
+          </LinkAnchor>
+        </Link>
+        <Link to=\\"/Invoices\\">
+          <LinkAnchor href=\\"/Invoices\\" navigate={[Function: navigate]}>
+            <a href=\\"/Invoices\\" onClick={[Function: onClick]}>
+              <button type=\\"button\\" className=\\"btn \\" id=\\"Invoices\\">
+                Invoices
+              </button>
+            </a>
+          </LinkAnchor>
+        </Link>
+      </div>
+    </LeftPanel>
+  </Router>
+</MemoryRouter>"
 `;
