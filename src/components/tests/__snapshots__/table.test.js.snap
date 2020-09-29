@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Table/> renders correctly with matching fieldnames and data keys 1`] = `
+<div>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <th>
+          H1
+        </th>
+        <th>
+          H2
+        </th>
+        <th>
+          H3
+        </th>
+        <th>
+          H4
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="tr"
+      >
+        <td>
+          name1
+        </td>
+        <td>
+          description
+        </td>
+        <td>
+          10000
+        </td>
+        <td>
+          INR
+        </td>
+      </tr>
+      <tr
+        className="tr"
+      >
+        <td>
+          name2
+        </td>
+        <td>
+          description
+        </td>
+        <td>
+          20000
+        </td>
+        <td>
+          INR
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`<Table/> renders correctly with non-matching fieldnames and data keys 1`] = `
+<div>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <th>
+          H1
+        </th>
+        <th>
+          H2
+        </th>
+        <th>
+          H3
+        </th>
+        <th>
+          H4
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="tr"
+      >
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr
+        className="tr"
+      >
+        <td />
+        <td />
+        <td />
+        <td />
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`<Table/> renders correctly without data 1`] = `
+<div>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <th>
+          H1
+        </th>
+        <th>
+          H2
+        </th>
+        <th>
+          H3
+        </th>
+        <th>
+          H4
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;

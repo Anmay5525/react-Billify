@@ -1,6 +1,5 @@
 import React from "react";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
 
 export default function NewCustomerForm() {

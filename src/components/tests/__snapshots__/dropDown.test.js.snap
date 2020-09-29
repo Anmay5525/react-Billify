@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dropdown/> renders correctly (for two items in list) 1`] = `
+<select
+  onChange={[Function]}
+  style={
+    Object {
+      "height": "26px",
+      "width": "100%",
+    }
+  }
+>
+  <option
+    className="option"
+  >
+    Select Item
+  </option>
+  <option
+    className="option"
+    value="{\\"name\\":\\"name1\\"}"
+  >
+    name1
+  </option>
+  <option
+    className="option"
+    value="{\\"name\\":\\"name2\\"}"
+  >
+    name2
+  </option>
+</select>
+`;
+
+exports[`<Dropdown/> renders correctly for empty array as list 1`] = `
+<select
+  onChange={[Function]}
+  style={
+    Object {
+      "height": "26px",
+      "width": "100%",
+    }
+  }
+>
+  <option
+    className="option"
+  >
+    Select Item
+  </option>
+</select>
+`;

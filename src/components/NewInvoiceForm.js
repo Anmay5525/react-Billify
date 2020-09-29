@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
 import InvoicesFormItem from "./InvoicesFormItem";
 import Loader from "./Loader";
 import DropDown from "./DropDown";
+
 
 export default function NewInvoiceForm() {
   const history = useHistory();
@@ -14,6 +14,7 @@ export default function NewInvoiceForm() {
   const [availableCustomers, setAvailableCustomers] = useState(null);
   const [selectedCustomer, setselectedCustomer] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
+
   const handleNewInvoice = (e) => {
     e.preventDefault();
 
@@ -304,7 +305,3 @@ export default function NewInvoiceForm() {
   }
   return <Loader />;
 }
-
-// NewInvoiceForm.propTypes = {
-//   handleSubRouteChange: PropTypes.func.isRequired,
-// };

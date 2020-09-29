@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing InvoicesForItem component if it  matches snapshot 1`] = `
+<tr
+  className="tr"
+>
+  <td>
+    name
+  </td>
+  <td>
+    <input
+      className="new-invoice-quantity"
+      max="5"
+      min="1"
+      name="quantity"
+      onChange={[Function]}
+      type="number"
+      value={0}
+    />
+  </td>
+  <td>
+    <span>
+      ₹
+    </span>
+    0
+  </td>
+  <td>
+    <span>
+      ₹
+    </span>
+    0
+  </td>
+  <td>
+    <button
+      className="simple-btn"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "0.8em",
+        }
+      }
+      type="button"
+    >
+      Delete
+    </button>
+  </td>
+</tr>
+`;
