@@ -7,15 +7,18 @@ exports[`Testing InvoicesForItem component if it  matches snapshot 1`] = `
   <td>
     name
   </td>
-  <td>
+  <td
+    align="center"
+  >
     <input
       className="new-invoice-quantity"
+      defaultValue={0}
       max="5"
       min="1"
       name="quantity"
-      onChange={[Function]}
+      onInput={[Function]}
+      required={true}
       type="number"
-      value={0}
     />
   </td>
   <td>
