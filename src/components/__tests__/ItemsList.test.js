@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
 import { act } from 'react-dom/test-utils';
 import ItemsList from '../ItemsList';
 import { BrowserRouter as Router } from "react-router-dom";
@@ -51,8 +50,14 @@ const itemsListData = {
 
 describe('Testing ItemsList component if it', () => {
 
-  beforeEach(() => {
+  let container;
+
+  beforeEach(async () => {
     fetch.resetMocks();
+    fetch.mockResponseOnce(JSON.stringify(itemsListData));
+    container = mount(<Router><ItemsList /></Router>);
+    await act(async () => { });
+    container.update();
   });
 
   it('renders without crashing', () => {
@@ -61,18 +66,7 @@ describe('Testing ItemsList component if it', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('renders loader', () => {
-    const tree = renderer.create(<ItemsList></ItemsList>).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('makes fetch calls', async () => {
-    fetch.mockResponseOnce(JSON.stringify(itemsListData));
-    const container = mount(<Router><ItemsList /></Router>);
-    await act(async () => {
-      (res) => setTimeout(res, 0);
-    });
-    container.update();
     expect(container.html()).toMatchSnapshot();
     expect(fetch).toHaveBeenCalledTimes(1);
   });
@@ -80,26 +74,21 @@ describe('Testing ItemsList component if it', () => {
   it('handles fetch errors', async () => {
     fetch.mockRejectOnce(['Error', {status: 200}]);
     const container = mount(<Router><ItemsList /></Router>);
-    await act(async () => {
-      (res) => setTimeout(res, 0);
-    });
+    await act(async () => { });
     container.update();
     expect(container.html()).toMatchSnapshot();
   });
 
   it('displays correct button type', async () => {
-    fetch.mockResponseOnce(JSON.stringify(itemsListData));
-    const container = mount(<Router><ItemsList /></Router>);
-    await act(async () => { });
-    container.update();
-    expect(container.find('button').at(0).type()).toEqual('button');
+    expect(container.find('.items-new-btn').prop('type')).toEqual('button');
+  });
+
+  it('displays correct number of table components', async () => {
+    expect(container.find('table')).toHaveLength(1);
+    expect(container.find('tr')).toHaveLength(3);
   });
 
   it('displays correct table columns', async () => {
-    fetch.mockResponseOnce(JSON.stringify(itemsListData));
-    const container = mount(<Router><ItemsList /></Router>);
-    await act(async () => { });
-    container.update();
     const tr0 = container.find('tr').at(0);
     expect(tr0.childAt(0).contains('NAME')).toEqual(true);
     expect(tr0.childAt(1).contains('DESCRIPTION')).toEqual(true);
@@ -108,10 +97,6 @@ describe('Testing ItemsList component if it', () => {
   });
 
   it('displays correct table DATA', async () => {
-    fetch.mockResponseOnce(JSON.stringify(itemsListData));
-    const container = mount(<Router><ItemsList /></Router>);
-    await act(async () => { });
-    container.update();
     const [tr1, tr2] = [container.find('tr').at(1), container.find('tr').at(2)];
     expect(tr1.childAt(0).contains('Kora Kagaz')).toEqual(true);
     expect(tr1.childAt(1).children().debug().length).toEqual(0);

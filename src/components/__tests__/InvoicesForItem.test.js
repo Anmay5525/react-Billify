@@ -1,3 +1,4 @@
+import { mount } from 'enzyme';
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import renderer from 'react-test-renderer';
@@ -12,8 +13,8 @@ describe('Testing InvoicesForItem component if it ', () => {
     });
   
     it('matches snapshot', () => {
-      const tree = renderer.create(<InvoicesForItem index={1} data={{name: 'name', quantity: 0, price: 0, amount: 0}} handleQuantityChange={() => {}} handleDelete={() => {}}></InvoicesForItem>).toJSON();
-      expect(tree).toMatchSnapshot();
+      const container = mount(<InvoicesForItem index={1} data={{name: 'name', quantity: 0, price: 0, amount: 0}} handleQuantityChange={() => {}} handleDelete={() => {}}/>);
+      expect(container.debug()).toMatchSnapshot();
     });
   
   });

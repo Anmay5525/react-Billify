@@ -1,3 +1,4 @@
+import { mount } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
@@ -12,8 +13,8 @@ describe('Testing DropDown component if it', () => {
   });
 
   it('matches snapshot', () => {
-    const tree = renderer.create(<DropDown list={[{name: 'John'}, {name: 'Stones'}]} handleSelect={() => {}}></DropDown>).toJSON();
-    expect(tree).toMatchSnapshot();
+    const container = mount(<DropDown list={[{name: 'David'}, {name: 'John'}]} handleSelect={() => {}}></DropDown>);
+    expect(container.debug()).toMatchSnapshot();
   });
 
 })

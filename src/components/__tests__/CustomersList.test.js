@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount, shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import CustomersList from '../CustomersList';
 import { BrowserRouter as Router } from "react-router-dom";
@@ -35,8 +34,14 @@ const customersListData = {
 
 describe('Testing CustomersList component if it', () => {
 
-  beforeEach(() => {
+  let container;
+
+  beforeEach(async () => {
     fetch.resetMocks();
+    fetch.mockResponseOnce(JSON.stringify(customersListData));
+    container = mount(<Router><CustomersList /></Router>);
+    await act(async () => { });
+    container.update();
   });
 
   it('renders without crashing', () => {
@@ -45,18 +50,7 @@ describe('Testing CustomersList component if it', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('renders loader', () => {
-    const tree = renderer.create(<CustomersList></CustomersList>).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('makes fetch calls', async () => {
-    fetch.mockResponseOnce(JSON.stringify(customersListData));
-    const container = mount(<Router><CustomersList /></Router>);
-    await act(async () => {
-      (res) => setTimeout(res, 0);
-    });
-    container.update();
     expect(container.html()).toMatchSnapshot();
     expect(fetch).toHaveBeenCalledTimes(1);
   });
@@ -64,79 +58,64 @@ describe('Testing CustomersList component if it', () => {
   it('handles fetch errors', async () => {
     fetch.mockRejectOnce(['Error', {status: 200}]);
     const container = mount(<Router><CustomersList /></Router>);
-    await act(async () => {
-      (res) => setTimeout(res, 0);
-    });
+    await act(async () => { });
     container.update();
     expect(container.html()).toMatchSnapshot();
   });
 
   it('displays correct button type', async () => {
-    fetch.mockResponseOnce(JSON.stringify(customersListData));
-    const container = mount(<Router><CustomersList /></Router>);
-    await act(async () => { });
-    container.update();
-    expect(container.find('button').at(0).type()).toEqual('button');
+    expect(container.find('.customers-new-btn').prop('type')).toEqual('button');
+    expect(container.find('.simple-btn').prop('type')).toEqual('button');
   });
 
-  it('displays correct button type', async () => {
-    fetch.mockResponseOnce(JSON.stringify(customersListData));
-    const container = mount(<Router><CustomersList /></Router>);
-    await act(async () => { });
-    container.update();
-    expect(container.find('button').at(1).type()).toEqual('button');
+  it('displays correct number of table components', async () => {
+    expect(container.find('table')).toHaveLength(1);
+    expect(container.find('tr')).toHaveLength(3);
   });
 
   it('displays correct table columns', async () => {
-    fetch.mockResponseOnce(JSON.stringify(customersListData));
-    const container = mount(<Router><CustomersList /></Router>);
-    await act(async () => { });
-    container.update();
-    expect(container.find('tr').at(0).childAt(0).contains('NAME')).toEqual(true);
-    expect(container.find('tr').at(0).childAt(1).contains('EMAIL')).toEqual(true);
-    expect(container.find('tr').at(0).childAt(2).contains('CONTACT')).toEqual(true);
-    expect(container.find('tr').at(0).childAt(3).contains('CREATED AT')).toEqual(true);
+    const tr0 = container.find('tr').at(0);
+    expect(tr0.childAt(0).contains('NAME')).toEqual(true);
+    expect(tr0.childAt(1).contains('EMAIL')).toEqual(true);
+    expect(tr0.childAt(2).contains('CONTACT')).toEqual(true);
+    expect(tr0.childAt(3).contains('CREATED AT')).toEqual(true);
   });
 
   it('displays correct table data', async () => {
-    fetch.mockResponseOnce(JSON.stringify(customersListData));
-    const container = mount(<Router><CustomersList /></Router>);
-    await act(async () => { });
-    container.update();
-    expect(container.find('tr').at(1).childAt(0).contains('David Silva')).toEqual(true);
-    expect(container.find('tr').at(1).childAt(1).contains('s@s.com')).toEqual(true);
-    expect(container.find('tr').at(1).childAt(2).contains('2938475867')).toEqual(true);
-    expect(container.find('tr').at(1).childAt(3).contains('Tue Sep 22 2020')).toEqual(true);
-    expect(container.find('tr').at(2).childAt(0).contains('John Stones')).toEqual(true);
-    expect(container.find('tr').at(2).childAt(1).contains('s@s.com')).toEqual(true);
-    expect(container.find('tr').at(2).childAt(2).contains('2837495867')).toEqual(true);
-    expect(container.find('tr').at(2).childAt(3).contains('Mon Sep 21 2020')).toEqual(true);
+    const tr1 = container.find('tr').at(1);
+    const tr2 = container.find('tr').at(2);
+    expect(tr1.childAt(0).contains('David Silva')).toEqual(true);
+    expect(tr1.childAt(1).contains('s@s.com')).toEqual(true);
+    expect(tr1.childAt(2).contains('2938475867')).toEqual(true);
+    expect(tr1.childAt(3).contains('Tue Sep 22 2020')).toEqual(true);
+    expect(tr2.childAt(0).contains('John Stones')).toEqual(true);
+    expect(tr2.childAt(1).contains('s@s.com')).toEqual(true);
+    expect(tr2.childAt(2).contains('2837495867')).toEqual(true);
+    expect(tr2.childAt(3).contains('Mon Sep 21 2020')).toEqual(true);
   });
 
   it('contains button which turns filter on', async () => {
-    fetch.mockResponseOnce(JSON.stringify(customersListData));
-    const container = mount(<Router><CustomersList /></Router>);
-    await act(async () => { });
-    container.update();
-    container.find('.filter-container').childAt(0).simulate('click');
-    expect(container.find('.filter-container').childAt(0).childAt(0).childAt(0).is('input')).toEqual(true);
-    expect(container.find('.filter-container').childAt(1).is('button')).toEqual(true);
-    expect(container.find('.filter-container').childAt(1).type()).toEqual('button');
+    let simpleButton = container.find('.simple-btn');
+    simpleButton.simulate('click');
+    const filterInput = container.find('.filter-input');
+    expect(filterInput).toHaveLength(1);
+    expect(filterInput.is('input')).toEqual(true);
+    simpleButton = container.find('.simple-btn');
+    expect(simpleButton).toHaveLength(1);
+    expect(simpleButton.is('button')).toEqual(true);
+    expect(simpleButton.type()).toEqual('button');
   });
   
   it('handles filter change', async () => {
-    fetch.mockResponseOnce(JSON.stringify(customersListData));
-    const container = shallow(<Router><CustomersList /></Router>);
-    await act(async () => { });
-    container.update();
-    const instance = container.instance();
-    console.log(CustomersList.prototype);
-    // const spy = jest.spyOn(instance, 'handleFilterChange');
-    // container.find('.filter-container').childAt(0).simulate('click');
-    // console.log(container.find('input').html());
-    // container.find('input').simulate('change', {target: {value: '50'}});
-    // console.log(container.find('input').render().attr('value'));
-    // expect(spy).toHaveBeenCalledTimes(1);
+    container.find('.simple-btn').simulate('click');
+    container.find('.filter-input').simulate('change', {target: {value: 'Da'}});
+    expect(container.find('table').text().includes('John Stones')).toEqual(false);
+  });
+
+  it('contains button which turns filter off', async () => {
+    container.find('.simple-btn').simulate('click');
+    container.find('.simple-btn').simulate('click');
+    expect(container.find('.filter-container').contains('<button type="button" class="simple-btn">Filter</button>'));
   });
 
 });

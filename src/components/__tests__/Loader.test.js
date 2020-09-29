@@ -1,3 +1,4 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import renderer from 'react-test-renderer';
@@ -10,10 +11,10 @@ describe('Testing Loader component if it ', () => {
     ReactDOM.render(<Loader></Loader>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-  
+
   it('matches snapshot', () => {
-    const tree = renderer.create(<Loader></Loader>).toJSON();
-    expect(tree).toMatchSnapshot();
+    const container = mount(<Loader />);
+    expect(container.html()).toMatchSnapshot();
   });
 
 })
