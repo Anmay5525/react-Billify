@@ -10,7 +10,6 @@ export default function NewInvoiceForm() {
   const history = useHistory();
   const [isVisibleItem, setIsVisibleItem] = useState(false);
   const [isVisibleCustomer, setisVisibleCustomer] = useState(true);
-  const [dummy, setDummy] = useState(false);
   const [availableItems, setAvailableItems] = useState(null);
   const [availableCustomers, setAvailableCustomers] = useState(null);
   const [selectedCustomer, setselectedCustomer] = useState(null);
@@ -45,8 +44,6 @@ export default function NewInvoiceForm() {
         });
       });
 
-      //   console.log(inv);
-
       fetch(url, {
         method: "POST",
         headers: {
@@ -58,15 +55,15 @@ export default function NewInvoiceForm() {
           if (res.ok) {
             return res.json();
           }
-          return toast(
-            `Something went wrong. Server responded with status ${res.status}`
-          );
+          return null;
         })
         .then((r) => {
           if (r) {
             toast.success("New invoice created");
             history.push("/Invoices");
             // handleSubRouteChange("list");
+          } else {
+            toast(`Something went wrong.`);
           }
         })
         .catch((error) => console.log(error));
@@ -111,12 +108,10 @@ export default function NewInvoiceForm() {
     cp.amount = Number((cp.quantity * cp.price).toFixed(2));
 
     setSelectedItems((prev) => {
-      // eslint-disable-next-line no-param-reassign
-      prev[index] = cp;
-      return prev;
+      const temp = [...prev];
+      temp[index] = cp;
+      return temp;
     });
-
-    setDummy((prev) => !prev);
   };
 
   const handleDelete = (index) => {
@@ -150,13 +145,11 @@ export default function NewInvoiceForm() {
       total = Number(total.toFixed(2));
     });
 
-    // console.log(selectedItems, total);
     return (
       <div className="content">
-        {/* <ToastContainer /> */}
         <form onSubmit={(e) => handleNewInvoice(e)}>
           <div className="invoices-title-container">
-            <div className="invoices-title">Invoices</div>
+            <div className="invoices-title">New Invoice</div>
             <button type="submit" className="invoices-new-btn">
               Save Invoice
             </button>
@@ -203,11 +196,15 @@ export default function NewInvoiceForm() {
               )}
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "26%" }}
+            >
               <span>Issued At</span>
               <input type="date" required name="issue" className="date" />
             </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "26%" }}
+            >
               <span>Due Date</span>
               <input type="date" required name="due" className="date" />
             </div>
@@ -230,7 +227,7 @@ export default function NewInvoiceForm() {
                       data={item}
                       handleQuantityChange={handleQuantityChange}
                       handleDelete={handleDelete}
-                      key={item.name}
+                      key={item.id}
                     />
                   );
                 })}
@@ -270,7 +267,7 @@ export default function NewInvoiceForm() {
               <tbody>
                 {selectedItems.map((item) => {
                   return (
-                    <tr key={item.amount + window.performance.now()}>
+                    <tr key={item.name + item.id}>
                       <td>{item.name}</td>
                       <td align="right">
                         <span>x</span>
