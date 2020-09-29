@@ -1,7 +1,6 @@
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
-import renderer from 'react-test-renderer';
 import Loader from '../Loader';
 
 describe('Testing Loader component if it ', () => {

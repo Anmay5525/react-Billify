@@ -1,7 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
-import renderer from 'react-test-renderer';
 import InvoicesForItem from '../InvoicesFormItem';
 
 describe('Testing InvoicesForItem component if it ', () => {
