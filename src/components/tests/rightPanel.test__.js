@@ -1,8 +1,8 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import RightPanel from '../RightPanel';
+import React from "react";
+import renderer from "react-test-renderer";
+import RightPanel from "../RightPanel";
 
-it('renders correctly',()=>{
-    const tree=renderer.create(<RightPanel/>).toJSON();
-    expect(tree).toMatchSnapshot();
+it("renders correctly", () => {
+  const tree = renderer.create(<RightPanel />).toJSON();
+  expect(tree).toMatchSnapshot();
 });
