@@ -31,17 +31,12 @@ export default function NewCustomerForm() {
         if (res.ok) {
           return res.json();
         }
-        // return toast.error(
-        //   `Something went wrong. Server responded with status ${res.status}`
-        // );
-        // console.log(res);
         return null;
       })
       .then((r) => {
         if (r) {
           toast.success("New customer created");
           history.push("/Customers");
-          // handleSubRouteChange("list");
         } else {
           toast.error(`Something went wrong!`);
         }
@@ -103,7 +98,3 @@ export default function NewCustomerForm() {
     </div>
   );
 }
-
-// NewCustomerForm.propTypes = {
-//   handleSubRouteChange: PropTypes.func.isRequired,
-// };

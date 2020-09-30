@@ -54,8 +54,4 @@ const ItemsList = () => {
   return <Loader />;
 };
 
-// ItemsList.propTypes = {
-//   handleSubRouteChange: PropTypes.func.isRequired,
-// };
-
 export default ItemsList;
