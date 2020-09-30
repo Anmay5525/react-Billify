@@ -5,7 +5,6 @@ import InvoicesFormItem from "./InvoicesFormItem";
 import Loader from "./Loader";
 import DropDown from "./DropDown";
 
-
 export default function NewInvoiceForm() {
   const history = useHistory();
   const [isVisibleItem, setIsVisibleItem] = useState(false);
@@ -61,7 +60,6 @@ export default function NewInvoiceForm() {
           if (r) {
             toast.success("New invoice created");
             history.push("/Invoices");
-            // handleSubRouteChange("list");
           } else {
             toast(`Something went wrong.`);
           }

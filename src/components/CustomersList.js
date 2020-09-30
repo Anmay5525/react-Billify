@@ -14,7 +14,7 @@ const CustomersList = () => {
 
   function handleFilterChange(event) {
     setFilterString(event.target.value);
-  };
+  }
 
   const getCustomers = () => {
     fetch("https://rzp-training.herokuapp.com/team1/customers", { signal })
@@ -93,9 +93,5 @@ const CustomersList = () => {
   }
   return <Loader />;
 };
-
-// CustomersList.propTypes = {
-//   handleSubRouteChange: PropTypes.func.isRequired,
-// };
 
 export default CustomersList;

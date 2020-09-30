@@ -38,11 +38,7 @@ const InvoicesList = () => {
         <div className="invoices-title-container">
           <div className="invoices-title">Invoices</div>
           <Link to="/Invoices/New">
-            <button
-              type="button"
-              className="invoices-new-btn"
-              // onClick={() => handleSubRouteChange("new")}
-            >
+            <button type="button" className="invoices-new-btn">
               + New Invoice
             </button>
           </Link>
@@ -53,9 +49,5 @@ const InvoicesList = () => {
   }
   return <Loader />;
 };
-
-// InvoicesList.propTypes = {
-//   handleSubRouteChange: PropTypes.func.isRequired,
-// };
 
 export default InvoicesList;
