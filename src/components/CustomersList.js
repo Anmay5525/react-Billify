@@ -18,8 +18,17 @@ const CustomersList = () => {
 
   const getCustomers = () => {
     fetch("https://rzp-training.herokuapp.com/team1/customers", { signal })
-      .then((res) => res.json())
-      .then((r) => setCustomers(r))
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return null;
+      })
+      .then((r) => {
+        if (r) {
+          setCustomers(r);
+        }
+      })
       .catch((er) => console.log(er));
   };
 

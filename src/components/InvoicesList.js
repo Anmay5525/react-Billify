@@ -12,8 +12,17 @@ const InvoicesList = () => {
 
   const getInvoices = () => {
     fetch("https://rzp-training.herokuapp.com/team1/invoices", { signal })
-      .then((res) => res.json())
-      .then((r) => setInvoices(r))
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return null;
+      })
+      .then((r) => {
+        if (r) {
+          setInvoices(r);
+        }
+      })
       .catch((er) => console.log(er));
   };
   useEffect(() => {
