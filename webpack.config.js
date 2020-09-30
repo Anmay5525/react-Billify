@@ -1,9 +1,9 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  // output: {
-  //   publicPath: "/",
-  // },
+  output: {
+    publicPath: "/",
+  },
   module: {
     rules: [
       {
