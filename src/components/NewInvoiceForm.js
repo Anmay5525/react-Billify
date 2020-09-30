@@ -97,7 +97,6 @@ export default function NewInvoiceForm() {
 
   const handleCustomerSelect = (e) => {
     const selected = JSON.parse(e.target.value);
-
     setselectedCustomer(selected);
     setisVisibleCustomer(false);
   };
@@ -235,7 +234,7 @@ export default function NewInvoiceForm() {
             </table>
             <button
               type="button"
-              className="simple-btn"
+              className="simple-btn add-item-btn"
               onClick={() => setIsVisibleItem(true)}
             >
               Add Item

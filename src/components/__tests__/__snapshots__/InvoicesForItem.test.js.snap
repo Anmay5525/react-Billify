@@ -1,51 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing InvoicesForItem component if it  matches snapshot 1`] = `
-<tr
-  className="tr"
->
-  <td>
-    name
-  </td>
-  <td
-    align="center"
-  >
-    <input
-      className="new-invoice-quantity"
-      defaultValue={0}
-      max="5"
-      min="1"
-      name="quantity"
-      onInput={[Function]}
-      required={true}
-      type="number"
-    />
-  </td>
-  <td>
-    <span>
-      ₹
-    </span>
-    0
-  </td>
-  <td>
-    <span>
-      ₹
-    </span>
-    0
-  </td>
-  <td>
-    <button
-      className="simple-btn"
-      onClick={[Function]}
-      style={
-        Object {
-          "fontSize": "0.8em",
-        }
-      }
-      type="button"
-    >
-      Delete
-    </button>
-  </td>
-</tr>
+"<InvoicesFormItem index={1} data={{...}} handleQuantityChange={[Function: handleQuantityChange]} handleDelete={[Function: handleDelete]}>
+  <tr className=\\"tr\\">
+    <td>
+      name
+    </td>
+    <td align=\\"center\\">
+      <input className=\\"new-invoice-quantity\\" type=\\"number\\" name=\\"quantity\\" min=\\"1\\" max=\\"5\\" defaultValue={0} required={true} onInput={[Function: onInput]} />
+    </td>
+    <td>
+      <span>
+        ₹
+      </span>
+      0
+    </td>
+    <td>
+      <span>
+        ₹
+      </span>
+      0
+    </td>
+    <td>
+      <button style={{...}} type=\\"button\\" className=\\"simple-btn\\" onClick={[Function: onClick]}>
+        Delete
+      </button>
+    </td>
+  </tr>
+</InvoicesFormItem>"
 `;

@@ -3,20 +3,3 @@
 exports[`Testing CustomersList component if it handles fetch errors 1`] = `"<div class=\\"loader-container\\"><svg viewBox=\\"0 0 100 100\\" xmlns=\\"http://www.w3.org/2000/svg\\"><circle cx=\\"50\\" cy=\\"50\\" r=\\"45\\"></circle></svg></div>"`;
 
 exports[`Testing CustomersList component if it makes fetch calls 1`] = `"<div class=\\"content\\"><div class=\\"customers-title-container\\"><div class=\\"customers-title\\">Customers</div><a href=\\"/Customers/New\\"><button type=\\"button\\" class=\\"customers-new-btn\\">+ New Customer</button></a></div><div><div class=\\"filter-container\\"><button type=\\"button\\" class=\\"simple-btn\\">Filter</button></div><div><table class=\\"table\\"><thead><tr><th>NAME</th><th>EMAIL</th><th>CONTACT</th><th>CREATED AT</th></tr></thead><tbody><tr class=\\"tr\\"><td>David Silva</td><td>s@s.com</td><td>2938475867</td><td>Tue Sep 22 2020</td></tr><tr class=\\"tr\\"><td>John Stones</td><td>s@s.com</td><td>2837495867</td><td>Mon Sep 21 2020</td></tr></tbody></table></div></div></div>"`;
-
-exports[`Testing CustomersList component if it renders loader 1`] = `
-<div
-  className="loader-container"
->
-  <svg
-    viewBox="0 0 100 100"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle
-      cx="50"
-      cy="50"
-      r="45"
-    />
-  </svg>
-</div>
-`;

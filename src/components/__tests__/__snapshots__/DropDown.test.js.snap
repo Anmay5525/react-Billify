@@ -1,31 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing DropDown component if it matches snapshot 1`] = `
-<select
-  onChange={[Function]}
-  style={
-    Object {
-      "height": "26px",
-      "width": "100%",
-    }
-  }
->
-  <option
-    className="option"
-  >
-    Select Item
-  </option>
-  <option
-    className="option"
-    value="{\\"name\\":\\"John\\"}"
-  >
-    John
-  </option>
-  <option
-    className="option"
-    value="{\\"name\\":\\"Stones\\"}"
-  >
-    Stones
-  </option>
-</select>
+"<DropDown list={{...}} handleSelect={[Function: handleSelect]}>
+  <select style={{...}} onChange={[Function: handleSelect]}>
+    <option className=\\"option\\">
+      Select Item
+    </option>
+    <option className=\\"option\\" value=\\"{\\"name\\":\\"David\\"}\\">
+      David
+    </option>
+    <option className=\\"option\\" value=\\"{\\"name\\":\\"John\\"}\\">
+      John
+    </option>
+  </select>
+</DropDown>"
 `;
