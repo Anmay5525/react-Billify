@@ -42,53 +42,56 @@ export default function NewItemForm() {
 
   return (
     <div className="content">
-      <form className="items-form" onSubmit={(e) => handleNewItem(e)}>
-        <div className="input-cnt">
-          <div>Name</div>
-          <input
-            className="input"
-            name="name"
-            type="text"
-            placeholder="Enter name of item"
-            required
-            maxLength="40"
-          />
-        </div>
+      <h2 className="new-item-title">New Item</h2>
+      <div className="items-form-container">
+        <form className="items-form" onSubmit={(e) => handleNewItem(e)}>
+          <div className="input-cnt">
+            <div>Name</div>
+            <input
+              className="input"
+              name="name"
+              type="text"
+              placeholder="Enter name of item"
+              required
+              maxLength="40"
+            />
+          </div>
 
-        <div className="input-cnt">
-          <div>Amount</div>
-          <input
-            className="input"
-            type="text"
-            pattern="^[0-9]+"
-            name="amount"
-            placeholder="Enter amount"
-            required
-            onInput={(e) => {
-              if (e.target.validity.patternMismatch) {
-                e.target.setCustomValidity("Enter a valid amount!");
-              } else {
-                e.target.setCustomValidity("");
-              }
-            }}
-          />
-        </div>
+          <div className="input-cnt">
+            <div>Amount</div>
+            <input
+              className="input"
+              type="text"
+              pattern="^[0-9]+"
+              name="amount"
+              placeholder="Enter amount"
+              required
+              onInput={(e) => {
+                if (e.target.validity.patternMismatch) {
+                  e.target.setCustomValidity("Enter a valid amount!");
+                } else {
+                  e.target.setCustomValidity("");
+                }
+              }}
+            />
+          </div>
 
-        <div className="input-cnt">
-          <div>Description</div>
-          <textarea
-            className="textarea"
-            name="description"
-            placeholder="Add description"
-            rows="4"
-          />
-        </div>
-        <div>
-          <button type="submit" className="items-add-btn">
-            Add Item
-          </button>
-        </div>
-      </form>
+          <div className="input-cnt">
+            <div>Description</div>
+            <textarea
+              className="textarea"
+              name="description"
+              placeholder="Add description"
+              rows="4"
+            />
+          </div>
+          <div>
+            <button type="submit" className="items-add-btn">
+              Add Item
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

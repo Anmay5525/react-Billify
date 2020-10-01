@@ -46,55 +46,58 @@ export default function NewCustomerForm() {
 
   return (
     <div className="content">
-      <form className="customers-form" onSubmit={(e) => handleNewCustomer(e)}>
-        <div className="input-cnt">
-          <div>Name</div>
-          <input
-            className="input"
-            name="name"
-            type="text"
-            placeholder="Enter name of customer"
-            required
-            maxLength="25"
-          />
-        </div>
+      <h2 className="new-customer-title">New Customer</h2>
+      <div className="customers-form-container">
+        <form className="customers-form" onSubmit={(e) => handleNewCustomer(e)}>
+          <div className="input-cnt">
+            <div>Name</div>
+            <input
+              className="input"
+              name="name"
+              type="text"
+              placeholder="Enter name of customer"
+              required
+              maxLength="25"
+            />
+          </div>
 
-        <div className="input-cnt">
-          <div>Email</div>
-          <input
-            className="input"
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            required
-            maxLength="30"
-          />
-        </div>
+          <div className="input-cnt">
+            <div>Email</div>
+            <input
+              className="input"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              required
+              maxLength="30"
+            />
+          </div>
 
-        <div className="input-cnt">
-          <div>Phone No.</div>
-          <input
-            className="input"
-            type="text"
-            pattern="^[0-9]{10}$"
-            name="phone"
-            placeholder="Enter phone no."
-            required
-            onInput={(event) => {
-              if (event.target.validity.patternMismatch) {
-                event.target.setCustomValidity("Enter a valid phone number!");
-              } else {
-                event.target.setCustomValidity("");
-              }
-            }}
-          />
-        </div>
-        <div>
-          <button type="submit" className="customers-add-btn">
-            Add Customer
-          </button>
-        </div>
-      </form>
+          <div className="input-cnt">
+            <div>Phone No.</div>
+            <input
+              className="input"
+              type="text"
+              pattern="^[0-9]{10}$"
+              name="phone"
+              placeholder="Enter phone no."
+              required
+              onInput={(event) => {
+                if (event.target.validity.patternMismatch) {
+                  event.target.setCustomValidity("Enter a valid phone number!");
+                } else {
+                  event.target.setCustomValidity("");
+                }
+              }}
+            />
+          </div>
+          <div>
+            <button type="submit" className="customers-add-btn">
+              Add Customer
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
