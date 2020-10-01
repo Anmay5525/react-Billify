@@ -27,16 +27,12 @@ export default function NewItemForm() {
         if (res.ok) {
           return res.json();
         }
-        // return toast.error(
-        //   `Something went wrong. Server responded with status ${res.status}`
-        // );
         return null;
       })
       .then((r) => {
         if (r) {
           toast.success("New item created");
           history.push("/Items");
-          // handleSubRouteChange("list");
         } else {
           toast.error(`Something went Wrong !`);
         }
@@ -96,7 +92,3 @@ export default function NewItemForm() {
     </div>
   );
 }
-
-// NewItemForm.propTypes = {
-//   handleSubRouteChange: PropTypes.func.isRequired,
-// };

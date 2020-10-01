@@ -14,12 +14,21 @@ const CustomersList = () => {
 
   function handleFilterChange(event) {
     setFilterString(event.target.value);
-  };
+  }
 
   const getCustomers = () => {
     fetch("https://rzp-training.herokuapp.com/team1/customers", { signal })
-      .then((res) => res.json())
-      .then((r) => setCustomers(r))
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return null;
+      })
+      .then((r) => {
+        if (r) {
+          setCustomers(r);
+        }
+      })
       .catch((er) => console.log(er));
   };
 
@@ -93,9 +102,5 @@ const CustomersList = () => {
   }
   return <Loader />;
 };
-
-// CustomersList.propTypes = {
-//   handleSubRouteChange: PropTypes.func.isRequired,
-// };
 
 export default CustomersList;

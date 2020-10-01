@@ -12,8 +12,17 @@ const ItemsList = () => {
 
   const getItems = () => {
     fetch("https://rzp-training.herokuapp.com/team1/items", { signal })
-      .then((res) => res.json())
-      .then((r) => setItems(r))
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return null;
+      })
+      .then((r) => {
+        if (r) {
+          setItems(r);
+        }
+      })
       .catch((er) => console.log(er));
   };
   useEffect(() => {
@@ -38,11 +47,7 @@ const ItemsList = () => {
         <div className="items-title-container">
           <div className="items-title">Items</div>
           <Link to="/Items/New">
-            <button
-              type="button"
-              className="items-new-btn"
-              // onClick={() => handleSubRouteChange("new")}
-            >
+            <button type="button" className="items-new-btn">
               + New Item
             </button>
           </Link>
@@ -53,9 +58,5 @@ const ItemsList = () => {
   }
   return <Loader />;
 };
-
-// ItemsList.propTypes = {
-//   handleSubRouteChange: PropTypes.func.isRequired,
-// };
 
 export default ItemsList;

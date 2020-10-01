@@ -12,8 +12,17 @@ const InvoicesList = () => {
 
   const getInvoices = () => {
     fetch("https://rzp-training.herokuapp.com/team1/invoices", { signal })
-      .then((res) => res.json())
-      .then((r) => setInvoices(r))
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return null;
+      })
+      .then((r) => {
+        if (r) {
+          setInvoices(r);
+        }
+      })
       .catch((er) => console.log(er));
   };
   useEffect(() => {
@@ -38,11 +47,7 @@ const InvoicesList = () => {
         <div className="invoices-title-container">
           <div className="invoices-title">Invoices</div>
           <Link to="/Invoices/New">
-            <button
-              type="button"
-              className="invoices-new-btn"
-              // onClick={() => handleSubRouteChange("new")}
-            >
+            <button type="button" className="invoices-new-btn">
               + New Invoice
             </button>
           </Link>
@@ -53,9 +58,5 @@ const InvoicesList = () => {
   }
   return <Loader />;
 };
-
-// InvoicesList.propTypes = {
-//   handleSubRouteChange: PropTypes.func.isRequired,
-// };
 
 export default InvoicesList;
