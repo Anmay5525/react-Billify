@@ -6,6 +6,8 @@ import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
 import "../css/App.css";
 
+// dummy changes to test CI
+
 const App = () => {
   return (
     <Router>
