@@ -1,8 +1,9 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import RightPanel from "../RightPanel";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import RightPanel from '../RightPanel';
+import { BrowserRouter as Router } from "react-router-dom";
 
-it("renders correctly", () => {
-  const tree = renderer.create(<RightPanel />).toJSON();
-  expect(tree).toMatchSnapshot();
+it('renders correctly',()=>{
+    const tree=renderer.create(<Router><RightPanel/></Router>).toJSON();
+    expect(tree).toMatchSnapshot();
 });
