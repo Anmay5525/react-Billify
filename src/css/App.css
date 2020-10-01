@@ -60,6 +60,7 @@ body {
   align-content: center;
   display: flex;
   /* width: 100%; */
+  /* height: 100%; */
   flex-direction: column;
 }
 
@@ -77,19 +78,15 @@ body {
 
 .input {
   padding: 8px 8px;
-  width: 40%;
+  width: 100%;
   transition: all 0.3s;
   margin-top: 5px;
   margin-bottom: 5px;
   border: 1px solid #dddddd;
 }
 
-.input:valid {
-  border: 2px solid green;
-}
-
 .input:focus {
-  width: 50%;
+  width: 108%;
 }
 
 .filter-container {
@@ -147,16 +144,6 @@ body {
   transform: scale(1.08);
   cursor: pointer;
 }
-/* 
-.invoices-table,
-.customers-table,
-.items-table {
-  align-content: center;
-  justify-content: center;
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0px 10px;
-} */
 
 .table {
   align-content: center;
@@ -187,11 +174,31 @@ th {
   text-align: left;
 }
 
+.new-customer-title,
+.new-item-title {
+  width: fit-content;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.customers-form-container,
+.items-form-container {
+  background-color: white;
+  display: flex;
+  margin: auto;
+  width: 70%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
 .customers-form {
   display: flex;
-  flex-wrap: wrap;
-  padding: 20px 10px 10px 20px;
+  padding: 20px 10px 20px 20px;
   flex-direction: column;
+  width: 100%;
+  /* margin: auto; */
+  /* background-color: white; */
 }
 
 .customers-add-btn,
@@ -214,14 +221,16 @@ th {
   display: flex;
   flex-direction: column;
   padding: 20px 10px 10px 20px;
+  width: 100%;
 }
 
 .textarea {
-  width: 50%;
+  width: 100%;
   margin-right: 50px;
   margin-top: 6px;
   padding-left: 8px;
   border: 1px solid #dddddd;
+  resize: none;
 }
 
 /* new invoice form */
