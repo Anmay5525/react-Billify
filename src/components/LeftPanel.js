@@ -12,6 +12,7 @@ const LeftPanel = () => {
           className={`btn ${activeBtn === "Customers" ? "active" : ""}`}
           id="Customers"
         >
+          {/* change to see if CI stops if test fails */}
           Customers
         </button>
       </Link>
