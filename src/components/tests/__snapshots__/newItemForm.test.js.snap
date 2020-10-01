@@ -4,62 +4,71 @@ exports[`newItemForm renders without crashing 1`] = `
 <div
   className="content"
 >
-  <form
-    className="items-form"
-    onSubmit={[Function]}
+  <h2
+    className="new-item-title"
   >
-    <div
-      className="input-cnt"
+    New Item
+  </h2>
+  <div
+    className="items-form-container"
+  >
+    <form
+      className="items-form"
+      onSubmit={[Function]}
     >
-      <div>
-        Name
-      </div>
-      <input
-        className="input"
-        maxLength="40"
-        name="name"
-        placeholder="Enter name of item"
-        required={true}
-        type="text"
-      />
-    </div>
-    <div
-      className="input-cnt"
-    >
-      <div>
-        Amount
-      </div>
-      <input
-        className="input"
-        name="amount"
-        onInput={[Function]}
-        pattern="^[0-9]+"
-        placeholder="Enter amount"
-        required={true}
-        type="text"
-      />
-    </div>
-    <div
-      className="input-cnt"
-    >
-      <div>
-        Description
-      </div>
-      <textarea
-        className="textarea"
-        name="description"
-        placeholder="Add description"
-        rows="4"
-      />
-    </div>
-    <div>
-      <button
-        className="items-add-btn"
-        type="submit"
+      <div
+        className="input-cnt"
       >
-        Add Item
-      </button>
-    </div>
-  </form>
+        <div>
+          Name
+        </div>
+        <input
+          className="input"
+          maxLength="40"
+          name="name"
+          placeholder="Enter name of item"
+          required={true}
+          type="text"
+        />
+      </div>
+      <div
+        className="input-cnt"
+      >
+        <div>
+          Amount
+        </div>
+        <input
+          className="input"
+          name="amount"
+          onInput={[Function]}
+          pattern="^[0-9]+"
+          placeholder="Enter amount"
+          required={true}
+          type="text"
+        />
+      </div>
+      <div
+        className="input-cnt"
+      >
+        <div>
+          Description
+        </div>
+        <textarea
+          className="textarea"
+          name="description"
+          placeholder="Add description"
+          rows="4"
+        />
+      </div>
+      <div>
+        <button
+          className="items-add-btn"
+          type="submit"
+        >
+          Add Item
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 `;
